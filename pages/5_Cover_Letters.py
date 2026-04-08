@@ -1,5 +1,5 @@
 import streamlit as st
-from engine.state import load_profile, load_active_jobs
+from engine.state import load_profile, load_user_saved_jobs
 from engine.job_model import JobListing
 from engine.cover_letter import CoverLetterGenerator
 from engine.guard import require_login, sidebar_user_info, get_username
@@ -19,9 +19,9 @@ if not profile or not profile.is_complete():
     st.page_link("pages/1_Onboarding.py", label="Go to Onboarding", icon="📝")
     st.stop()
 
-raw_listings = load_active_jobs()
+raw_listings = load_user_saved_jobs(username)
 if not raw_listings:
-    st.info("No jobs in database. Search for jobs first.")
+    st.info("No saved jobs found. Save jobs from Job Search first.")
     st.stop()
 
 jobs = [JobListing.from_active_job(e) for e in raw_listings]

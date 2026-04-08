@@ -9,43 +9,44 @@ st.set_page_config(
 
 from engine.auth import login, register
 from engine.guard import get_username, sidebar_user_info
-from engine.state import load_profile, load_active_jobs, load_applications
-from engine.company_db import load_companies
+from engine.state import load_profile, load_applications, load_user_saved_jobs
 
 sidebar_user_info()
-
 username = get_username()
 
 if username:
-    profile, prefs = load_profile(username)
+    profile, _ = load_profile(username)
 
     st.markdown("""
 # Welcome to ApplyFlow
 
 **From resume to offer, in one smooth flow.**
 
-Your personalized dashboard scores every opening against your profile, writes tailored cover letters, and tracks applications from "applied" to "offer."
+Your onboarding profile drives job discovery, ranking, and application tracking.
 
 ### Quick Links
 
-1. **Onboarding** — Upload resume & set preferences
-2. **Dashboard** — View matched jobs with scores
-3. **Companies** — Browse 250+ company database
-4. **Job Search** — Live search across platforms
-5. **Cover Letters** — Generate tailored letters
-6. **Tracker** — Track your applications
+1. **Onboarding** — Add deep profile details + resume preview
+2. **Dashboard** — Personalized insights from your onboarding data
+3. **Saved & Applied** — Unified pipeline of saved jobs and applied jobs
+4. **Job Search** — Real-time search across platforms with advanced filters
+5. **Cover Letters** — Tailored drafts based on your profile and target role
 """)
 
-    col1, col2, col3 = st.columns(3)
-    with col1:
-        st.metric("Jobs in Database", len(load_active_jobs()))
-    with col2:
-        st.metric("Companies Tracked", len(load_companies()))
-    with col3:
-        st.metric("Applications Sent", len(load_applications(username)))
+    saved_jobs = load_user_saved_jobs(username)
+    apps = load_applications(username)
+
+    c1, c2, c3 = st.columns(3)
+    with c1:
+        st.metric("Saved Jobs", len(saved_jobs))
+    with c2:
+        st.metric("Applications", len(apps))
+    with c3:
+        pct = int((len(apps) / len(saved_jobs)) * 100) if saved_jobs else 0
+        st.metric("Apply Rate", f"{pct}%")
 
     if not profile or not profile.is_complete():
-        st.info("Complete onboarding to unlock personalized job matching.")
+        st.info("Complete onboarding to unlock personalized matching and insights.")
         st.page_link("pages/1_Onboarding.py", label="Start Onboarding", icon="📝")
 
 else:
@@ -54,7 +55,7 @@ else:
 
 **From resume to offer, in one smooth flow.**
 
-Upload your resume, set your preferences, and get a personalized dashboard that scores every opening against your profile, writes tailored cover letters, and tracks applications from "applied" to "offer."
+Create an account, complete onboarding, and get a personalized real-time job search workflow.
 """)
 
     tab1, tab2 = st.tabs(["Login", "Register"])

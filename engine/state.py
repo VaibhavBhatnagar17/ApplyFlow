@@ -1,4 +1,4 @@
-"""Per-user state persistence. Each user gets isolated profile, jobs, and applications."""
+"""Per-user state persistence. Each user gets isolated profile, resume, saved jobs, and applications."""
 
 import json
 from pathlib import Path
@@ -50,6 +50,28 @@ def load_profile(username: str = "") -> tuple[Profile | None, JobPreferences | N
     return p, pr
 
 
+def save_resume_text(text: str, username: str = ""):
+    state = _load_user_state(username)
+    state["resume_text"] = text
+    _save_user_state(username, state)
+
+
+def load_resume_text(username: str = "") -> str:
+    state = _load_user_state(username)
+    return state.get("resume_text", "")
+
+
+def save_resume_preview_b64(image_b64: str, username: str = ""):
+    state = _load_user_state(username)
+    state["resume_preview_b64"] = image_b64
+    _save_user_state(username, state)
+
+
+def load_resume_preview_b64(username: str = "") -> str:
+    state = _load_user_state(username)
+    return state.get("resume_preview_b64", "")
+
+
 def save_application(job_id: str, company: str, title: str, url: str,
                      status: str = "applied", notes: str = "", username: str = ""):
     state = _load_user_state(username)
@@ -88,15 +110,30 @@ def update_application_status(job_id: str, status: str, notes: str = "", usernam
     _save_user_state(username, state)
 
 
-def save_resume_text(text: str, username: str = ""):
+def load_user_saved_jobs(username: str = "") -> list[dict]:
     state = _load_user_state(username)
-    state["resume_text"] = text
+    return state.get("saved_jobs", [])
+
+
+def save_user_saved_jobs(jobs: list[dict], username: str = ""):
+    state = _load_user_state(username)
+    state["saved_jobs"] = jobs
     _save_user_state(username, state)
 
 
-def load_resume_text(username: str = "") -> str:
-    state = _load_user_state(username)
-    return state.get("resume_text", "")
+def add_jobs_for_user(new_entries: list[dict], username: str = "") -> int:
+    current = load_user_saved_jobs(username)
+    existing_keys = {(j.get("company", "").lower(), j.get("title", "").lower()) for j in current}
+    added = 0
+    for entry in new_entries:
+        key = (entry.get("company", "").lower(), entry.get("title", "").lower())
+        if key not in existing_keys:
+            current.append(entry)
+            existing_keys.add(key)
+            added += 1
+    if added:
+        save_user_saved_jobs(current, username)
+    return added
 
 
 def load_active_jobs() -> list[dict]:
@@ -108,32 +145,3 @@ def load_active_jobs() -> list[dict]:
     with open(path) as f:
         data = json.load(f)
     return data.get("verified_listings", data if isinstance(data, list) else [])
-
-
-def save_active_jobs(listings: list[dict]):
-    if JOBS_FILE.exists():
-        with open(JOBS_FILE) as f:
-            data = json.load(f)
-    else:
-        data = {"verified_listings": []}
-    if isinstance(data, dict):
-        data["verified_listings"] = listings
-    else:
-        data = {"verified_listings": listings}
-    with open(JOBS_FILE, "w") as f:
-        json.dump(data, f, indent=2)
-
-
-def add_jobs_to_active(new_entries: list[dict]):
-    listings = load_active_jobs()
-    existing_keys = {(j.get("company", "").lower(), j.get("title", "").lower()) for j in listings}
-    added = 0
-    for entry in new_entries:
-        key = (entry.get("company", "").lower(), entry.get("title", "").lower())
-        if key not in existing_keys:
-            listings.append(entry)
-            existing_keys.add(key)
-            added += 1
-    if added:
-        save_active_jobs(listings)
-    return added
