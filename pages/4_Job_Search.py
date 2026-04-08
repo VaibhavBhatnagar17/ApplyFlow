@@ -3,7 +3,7 @@ from engine.scraper import JobScraper
 from engine.state import add_jobs_to_active, load_profile
 from engine.profile import TARGET_ROLES, TARGET_LOCATIONS
 
-st.set_page_config(page_title="Job Search | JobPilot", page_icon="🔍", layout="wide")
+st.set_page_config(page_title="Job Search | ApplyFlow", page_icon="🔍", layout="wide")
 st.title("Live Job Search")
 st.caption("Search across LinkedIn, Indeed, and Naukri for new openings.")
 

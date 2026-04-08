@@ -3,7 +3,7 @@ from engine.state import load_profile, load_active_jobs
 from engine.job_model import JobListing
 from engine.cover_letter import CoverLetterGenerator
 
-st.set_page_config(page_title="Cover Letters | JobPilot", page_icon="✉️", layout="wide")
+st.set_page_config(page_title="Cover Letters | ApplyFlow", page_icon="✉️", layout="wide")
 st.title("Cover Letter Generator")
 st.caption("Generate a tailored cover letter for any job in your database.")
 

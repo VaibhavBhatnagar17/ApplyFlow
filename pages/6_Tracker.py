@@ -3,7 +3,7 @@ import pandas as pd
 import plotly.express as px
 from engine.state import load_applications, update_application_status
 
-st.set_page_config(page_title="Tracker | JobPilot", page_icon="📋", layout="wide")
+st.set_page_config(page_title="Tracker | ApplyFlow", page_icon="📋", layout="wide")
 st.title("Application Tracker")
 st.caption("Track and manage all your job applications in one place.")
 

@@ -7,7 +7,7 @@ from engine.resume_parser import (
 )
 from engine.state import save_profile, load_profile
 
-st.set_page_config(page_title="Onboarding | JobPilot", page_icon="📝", layout="wide")
+st.set_page_config(page_title="Onboarding | ApplyFlow", page_icon="📝", layout="wide")
 st.title("Onboarding")
 st.caption("Upload your resume and set your preferences to get personalized job matches.")
 

@@ -6,7 +6,7 @@ from engine.state import load_profile, load_active_jobs, save_application, load_
 from engine.job_model import JobListing
 from engine.matcher import JobMatcher
 
-st.set_page_config(page_title="Dashboard | JobPilot", page_icon="📊", layout="wide")
+st.set_page_config(page_title="Dashboard | ApplyFlow", page_icon="📊", layout="wide")
 st.title("Job Dashboard")
 
 profile, prefs = load_profile()

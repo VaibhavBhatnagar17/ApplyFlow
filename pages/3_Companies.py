@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 from engine.company_db import load_companies, filter_companies, get_industries, get_tier_label
 
-st.set_page_config(page_title="Companies | JobPilot", page_icon="🏢", layout="wide")
+st.set_page_config(page_title="Companies | ApplyFlow", page_icon="🏢", layout="wide")
 st.title("Company Database")
 st.caption("Browse 250+ companies hiring for AI/ML/Data Science roles.")
 
