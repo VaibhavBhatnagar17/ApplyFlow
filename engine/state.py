@@ -66,9 +66,12 @@ def update_application_status(job_id: str, status: str, notes: str = ""):
 
 
 def load_active_jobs() -> list[dict]:
-    if not JOBS_FILE.exists():
+    path = JOBS_FILE
+    if not path.exists():
+        path = DATA_DIR / "sample_jobs.json"
+    if not path.exists():
         return []
-    with open(JOBS_FILE) as f:
+    with open(path) as f:
         data = json.load(f)
     return data.get("verified_listings", data if isinstance(data, list) else [])
 

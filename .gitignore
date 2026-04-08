@@ -3,5 +3,7 @@ __pycache__/
 .env
 data/user_state.json
 data/seen_jobs.json
+data/active_jobs.json
+data/company_research.json
 .DS_Store
 venv/

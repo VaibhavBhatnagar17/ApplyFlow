@@ -9,6 +9,8 @@ DATA_DIR = Path(__file__).parent.parent / "data"
 def load_companies() -> list[dict]:
     path = DATA_DIR / "company_research.json"
     if not path.exists():
+        path = DATA_DIR / "sample_companies.json"
+    if not path.exists():
         return []
     with open(path) as f:
         data = json.load(f)

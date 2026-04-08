@@ -1,0 +1,75 @@
+{
+  "generated_on": "2026-04-08",
+  "companies": [
+    {
+      "name": "Acme AI",
+      "tier": 1,
+      "industry": "AI / ML",
+      "careers_url": "https://example.com/careers",
+      "hq": "San Francisco, USA",
+      "india_offices": ["Bangalore"],
+      "remote_friendly": true,
+      "open_roles": ["ML Engineer", "Research Scientist"],
+      "salary_range": "30-60 LPA",
+      "why_good_fit": ["LLM/GenAI work aligns with experience", "Production ML systems at scale"],
+      "apply_strategy": "Apply via careers page, look for referral",
+      "notes": ""
+    },
+    {
+      "name": "DataCorp",
+      "tier": 2,
+      "industry": "Data Analytics",
+      "careers_url": "https://example.com/careers",
+      "hq": "Bangalore, India",
+      "india_offices": ["Bangalore", "Hyderabad"],
+      "remote_friendly": false,
+      "open_roles": ["Data Scientist", "NLP Engineer"],
+      "salary_range": "25-45 LPA",
+      "why_good_fit": ["NLP expertise is directly applicable", "Production ML systems match"],
+      "apply_strategy": "Apply on LinkedIn",
+      "notes": ""
+    },
+    {
+      "name": "CloudTech",
+      "tier": 2,
+      "industry": "Cloud / SaaS",
+      "careers_url": "https://example.com/careers",
+      "hq": "Mumbai, India",
+      "india_offices": ["Mumbai", "Pune"],
+      "remote_friendly": true,
+      "open_roles": ["CV Engineer", "ML Platform Engineer"],
+      "salary_range": "28-50 LPA",
+      "why_good_fit": ["Computer vision experience matches", "AWS production deployment aligns"],
+      "apply_strategy": "Apply via Naukri",
+      "notes": ""
+    },
+    {
+      "name": "FinML",
+      "tier": 3,
+      "industry": "Fintech",
+      "careers_url": "https://example.com/careers",
+      "hq": "Bangalore, India",
+      "india_offices": ["Bangalore"],
+      "remote_friendly": false,
+      "open_roles": ["ML Engineer"],
+      "salary_range": "30-55 LPA",
+      "why_good_fit": ["Fraud/risk ML uses similar production patterns", "PySpark experience valued"],
+      "apply_strategy": "LinkedIn Easy Apply",
+      "notes": ""
+    },
+    {
+      "name": "HealthAI",
+      "tier": 1,
+      "industry": "Healthcare AI",
+      "careers_url": "https://example.com/careers",
+      "hq": "Bangalore, India",
+      "india_offices": ["Bangalore"],
+      "remote_friendly": true,
+      "open_roles": ["GenAI Engineer", "LLM Engineer"],
+      "salary_range": "35-65 LPA",
+      "why_good_fit": ["Healthcare domain expertise is a strong differentiator", "RAG pipeline expertise directly applicable"],
+      "apply_strategy": "Apply via careers page",
+      "notes": ""
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "search_date": "2026-04-08",
+  "search_criteria": {
+    "experience_min": 4,
+    "experience_max": 8,
+    "roles": ["Machine Learning Engineer", "Data Scientist", "AI Engineer"],
+    "locations": ["Bangalore", "Remote", "Mumbai"],
+    "level": "mid-senior"
+  },
+  "verified_listings": [
+    {
+      "company": "Acme AI",
+      "title": "Senior Machine Learning Engineer",
+      "location": "Bangalore",
+      "experience": "5+ years",
+      "posted": "2026-04-01",
+      "url": "https://example.com/jobs/ml-engineer",
+      "platform": "linkedin",
+      "match_quality": "excellent",
+      "skills_matched": ["Python", "PyTorch", "LLM", "RAG", "AWS", "Docker"],
+      "status": "new",
+      "freshness": "active"
+    },
+    {
+      "company": "DataCorp",
+      "title": "Data Scientist - NLP",
+      "location": "Remote",
+      "experience": "4+ years",
+      "posted": "2026-04-02",
+      "url": "https://example.com/jobs/data-scientist",
+      "platform": "indeed",
+      "match_quality": "good",
+      "skills_matched": ["Python", "NLP", "TensorFlow", "SQL"],
+      "status": "new",
+      "freshness": "active"
+    },
+    {
+      "company": "CloudTech",
+      "title": "AI Engineer - Computer Vision",
+      "location": "Mumbai",
+      "experience": "3-6 years",
+      "posted": "2026-03-28",
+      "url": "https://example.com/jobs/cv-engineer",
+      "platform": "naukri",
+      "match_quality": "good",
+      "skills_matched": ["Python", "OpenCV", "PyTorch", "Computer Vision"],
+      "status": "new",
+      "freshness": "1 week ago"
+    },
+    {
+      "company": "FinML",
+      "title": "ML Engineer - Fraud Detection",
+      "location": "Bangalore",
+      "experience": "5-8 years",
+      "posted": "2026-04-05",
+      "url": "https://example.com/jobs/fraud-ml",
+      "platform": "linkedin",
+      "match_quality": "good",
+      "skills_matched": ["Python", "scikit-learn", "PySpark", "SQL", "AWS"],
+      "status": "new",
+      "freshness": "active"
+    },
+    {
+      "company": "HealthAI",
+      "title": "GenAI Engineer",
+      "location": "Bangalore (Hybrid)",
+      "experience": "4+ years",
+      "posted": "2026-04-03",
+      "url": "https://example.com/jobs/genai",
+      "platform": "careers_page",
+      "match_quality": "excellent",
+      "skills_matched": ["LLM", "RAG", "LangChain", "Python", "Agents"],
+      "status": "new",
+      "freshness": "active"
+    }
+  ]
+}
