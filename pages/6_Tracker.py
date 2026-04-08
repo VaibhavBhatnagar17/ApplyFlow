@@ -2,12 +2,18 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 from engine.state import load_applications, update_application_status
+from engine.guard import require_login, sidebar_user_info, get_username
 
 st.set_page_config(page_title="Tracker | ApplyFlow", page_icon="📋", layout="wide")
+sidebar_user_info()
+require_login()
+
+username = get_username()
+
 st.title("Application Tracker")
 st.caption("Track and manage all your job applications in one place.")
 
-apps = load_applications()
+apps = load_applications(username)
 
 if not apps:
     st.info("No applications tracked yet. Go to the Dashboard and mark jobs as applied.")
@@ -16,7 +22,6 @@ if not apps:
 
 STATUSES = ["applied", "screening", "interview", "offer", "rejected", "withdrawn"]
 
-# --- Pipeline Stats ---
 status_counts = {}
 for a in apps:
     s = a.get("status", "applied")
@@ -29,7 +34,6 @@ c3.metric("Interview", status_counts.get("interview", 0))
 c4.metric("Offers", status_counts.get("offer", 0))
 c5.metric("Rejected", status_counts.get("rejected", 0))
 
-# --- Pipeline Funnel ---
 pipeline_data = []
 for s in ["applied", "screening", "interview", "offer"]:
     pipeline_data.append({"Stage": s.capitalize(), "Count": status_counts.get(s, 0)})
@@ -40,11 +44,9 @@ if any(d["Count"] > 0 for d in pipeline_data):
     fig.update_layout(height=300, margin=dict(l=0, r=0, t=40, b=0))
     st.plotly_chart(fig, use_container_width=True)
 
-# --- Application List ---
 st.subheader("All Applications")
 
 status_filter = st.selectbox("Filter by status", ["All"] + STATUSES)
-
 filtered_apps = apps if status_filter == "All" else [a for a in apps if a.get("status") == status_filter]
 
 for i, app in enumerate(filtered_apps):
@@ -67,14 +69,13 @@ for i, app in enumerate(filtered_apps):
             notes = st.text_input("Notes", value=app.get("notes", ""), key=f"notes_{i}_{app['job_id']}")
         with cols[4]:
             if st.button("Update", key=f"update_{i}_{app['job_id']}", use_container_width=True):
-                update_application_status(app["job_id"], new_status, notes)
+                update_application_status(app["job_id"], new_status, notes, username=username)
                 st.success("Updated!")
                 st.rerun()
             if app.get("url"):
                 st.link_button("View", app["url"], use_container_width=True)
         st.divider()
 
-# --- Export ---
 with st.expander("Export Data"):
     df = pd.DataFrame(apps)
     csv = df.to_csv(index=False)

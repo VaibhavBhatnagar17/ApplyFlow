@@ -1,17 +1,20 @@
 import streamlit as st
 import pandas as pd
 from engine.company_db import load_companies, filter_companies, get_industries, get_tier_label
+from engine.guard import require_login, sidebar_user_info
 
 st.set_page_config(page_title="Companies | ApplyFlow", page_icon="🏢", layout="wide")
+sidebar_user_info()
+require_login()
+
 st.title("Company Database")
 st.caption("Browse 250+ companies hiring for AI/ML/Data Science roles.")
 
 companies = load_companies()
 if not companies:
-    st.error("No company data found. Check data/company_research.json.")
+    st.error("No company data found. Add company_research.json to data/.")
     st.stop()
 
-# --- Sidebar Filters ---
 st.sidebar.subheader("Filters")
 
 tier_options = {"All": None, "Dream (Tier 1)": 1, "Strong Fit (Tier 2)": 2, "Good Match (Tier 3)": 3}
@@ -25,14 +28,12 @@ location_choice = st.sidebar.text_input("Location filter", placeholder="e.g., Ba
 search = st.sidebar.text_input("Search", placeholder="Company name, industry...")
 
 filtered = filter_companies(
-    companies,
-    tier=tier_val,
+    companies, tier=tier_val,
     industry=industry_choice if industry_choice != "All" else None,
     location=location_choice or None,
     search=search or None,
 )
 
-# --- Stats ---
 c1, c2, c3, c4 = st.columns(4)
 c1.metric("Total Companies", len(companies))
 c2.metric("Filtered", len(filtered))
@@ -41,7 +42,6 @@ c4.metric("With India Office", sum(1 for c in companies if c.get("india_offices"
 
 st.subheader(f"Companies ({len(filtered)})")
 
-# --- Table ---
 rows = []
 for c in filtered:
     offices = ", ".join(c.get("india_offices", [])) if c.get("india_offices") else "—"
@@ -60,7 +60,6 @@ for c in filtered:
 
 if rows:
     df = pd.DataFrame(rows)
-
     st.dataframe(
         df,
         column_config={
@@ -68,19 +67,15 @@ if rows:
             "Company": st.column_config.TextColumn(width="medium"),
             "Why Good Fit": st.column_config.TextColumn(width="large"),
         },
-        hide_index=True,
-        use_container_width=True,
-        height=600,
+        hide_index=True, use_container_width=True, height=600,
     )
 else:
     st.info("No companies match your filters.")
 
-# --- Industry breakdown ---
 with st.expander("Industry Breakdown"):
     industry_counts = {}
     for c in companies:
         ind = c.get("industry", "Other")
         industry_counts[ind] = industry_counts.get(ind, 0) + 1
-    sorted_ind = sorted(industry_counts.items(), key=lambda x: -x[1])
-    for ind, count in sorted_ind:
+    for ind, count in sorted(industry_counts.items(), key=lambda x: -x[1]):
         st.write(f"**{ind}**: {count} companies")

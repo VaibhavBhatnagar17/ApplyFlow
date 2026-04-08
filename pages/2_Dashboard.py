@@ -1,15 +1,22 @@
 import streamlit as st
 import plotly.express as px
 import pandas as pd
+from dataclasses import asdict
 
 from engine.state import load_profile, load_active_jobs, save_application, load_applications
 from engine.job_model import JobListing
 from engine.matcher import JobMatcher
+from engine.guard import require_login, sidebar_user_info, get_username
 
 st.set_page_config(page_title="Dashboard | ApplyFlow", page_icon="📊", layout="wide")
+sidebar_user_info()
+require_login()
+
+username = get_username()
+
 st.title("Job Dashboard")
 
-profile, prefs = load_profile()
+profile, prefs = load_profile(username)
 if not profile or not profile.is_complete():
     st.warning("Complete onboarding first to see personalized matches.")
     st.page_link("pages/1_Onboarding.py", label="Go to Onboarding", icon="📝")
@@ -20,20 +27,11 @@ if not raw_listings:
     st.info("No jobs in database yet. Use Job Search to find some.")
     st.stop()
 
-applied_ids = {a["job_id"] for a in load_applications()}
+applied_ids = {a["job_id"] for a in load_applications(username)}
 
-@st.cache_data(ttl=300)
-def build_job_data(_raw, _profile_dict, _prefs_dict):
-    from engine.profile import Profile, JobPreferences
-    p = Profile(**{k: v for k, v in _profile_dict.items() if k in Profile.__dataclass_fields__})
-    pr = JobPreferences(**{k: v for k, v in _prefs_dict.items() if k in JobPreferences.__dataclass_fields__})
-    jobs = [JobListing.from_active_job(e) for e in _raw]
-    matcher = JobMatcher(p, pr)
-    results = matcher.score_jobs(jobs)
-    return results
-
-from dataclasses import asdict
-results = build_job_data(raw_listings, asdict(profile), asdict(prefs))
+jobs = [JobListing.from_active_job(e) for e in raw_listings]
+matcher = JobMatcher(profile, prefs)
+results = matcher.score_jobs(jobs)
 
 # --- Summary Stats ---
 total = len(results)
@@ -98,10 +96,8 @@ elif quality_filter == "Stretch (<50%)":
 
 if company_filter != "All":
     filtered = [r for r in filtered if r.job.company == company_filter]
-
 if location_filter != "All":
     filtered = [r for r in filtered if r.job.location == location_filter]
-
 if search_text:
     sl = search_text.lower()
     filtered = [r for r in filtered if sl in r.job.title.lower()
@@ -116,13 +112,12 @@ for i, r in enumerate(filtered):
     is_applied = job.job_id in applied_ids
 
     score_color = "green" if r.score >= 0.75 else ("blue" if r.score >= 0.5 else "orange")
-    status_badge = "Applied" if is_applied else job.match_quality or "new"
 
     with st.container():
         cols = st.columns([3, 2, 1, 1, 1, 1, 1])
         with cols[0]:
             st.markdown(f"**{job.title}**")
-            st.caption(f"{job.company}")
+            st.caption(job.company)
         with cols[1]:
             st.caption(f"📍 {job.location}")
             if job.experience:
@@ -140,7 +135,7 @@ for i, r in enumerate(filtered):
         with cols[6]:
             if not is_applied:
                 if st.button("Mark Applied", key=f"apply_{i}_{job.job_id}", use_container_width=True):
-                    save_application(job.job_id, job.company, job.title, job.url)
+                    save_application(job.job_id, job.company, job.title, job.url, username=username)
                     st.rerun()
             else:
                 st.success("Applied", icon="✅")

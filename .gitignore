@@ -5,5 +5,7 @@ data/user_state.json
 data/seen_jobs.json
 data/active_jobs.json
 data/company_research.json
+data/users/
+data/users.json
 .DS_Store
 venv/

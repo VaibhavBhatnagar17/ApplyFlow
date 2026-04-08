@@ -2,14 +2,18 @@ import streamlit as st
 from engine.scraper import JobScraper
 from engine.state import add_jobs_to_active, load_profile
 from engine.profile import TARGET_ROLES, TARGET_LOCATIONS
+from engine.guard import require_login, sidebar_user_info, get_username
 
 st.set_page_config(page_title="Job Search | ApplyFlow", page_icon="🔍", layout="wide")
+sidebar_user_info()
+require_login()
+
+username = get_username()
 st.title("Live Job Search")
 st.caption("Search across LinkedIn, Indeed, and Naukri for new openings.")
 
-profile, prefs = load_profile()
+_, prefs = load_profile(username)
 
-# --- Search Form ---
 with st.form("search_form"):
     col1, col2 = st.columns(2)
     with col1:
@@ -25,12 +29,8 @@ with st.form("search_form"):
                                     len(TARGET_LOCATIONS) - 1
                                 ))
 
-    platforms = st.multiselect(
-        "Platforms",
-        ["linkedin", "indeed", "naukri"],
-        default=["linkedin", "indeed", "naukri"],
-    )
-
+    platforms = st.multiselect("Platforms", ["linkedin", "indeed", "naukri"],
+                                default=["linkedin", "indeed", "naukri"])
     search_btn = st.form_submit_button("Search", type="primary", use_container_width=True)
 
 if search_btn:
@@ -43,17 +43,15 @@ if search_btn:
                     "Try different role/location or check back later.")
     else:
         st.success(f"Found {len(jobs)} jobs!")
-
         st.session_state["search_results"] = jobs
 
 if "search_results" in st.session_state:
     jobs = st.session_state["search_results"]
-
     st.subheader(f"Results ({len(jobs)})")
 
     select_all = st.checkbox("Select all for saving")
-
     selected_indices = []
+
     for i, job in enumerate(jobs):
         col1, col2, col3, col4 = st.columns([3, 2, 1, 1])
         with col1:
@@ -69,7 +67,6 @@ if "search_results" in st.session_state:
             checked = st.checkbox("Save", key=f"save_{i}", value=select_all)
             if checked:
                 selected_indices.append(i)
-
         st.divider()
 
     if selected_indices:
@@ -78,17 +75,10 @@ if "search_results" in st.session_state:
             for idx in selected_indices:
                 j = jobs[idx]
                 entries.append({
-                    "company": j.company,
-                    "title": j.title,
-                    "location": j.location,
-                    "experience": "",
-                    "posted": j.posted_date,
-                    "url": j.url,
-                    "platform": j.platform,
-                    "match_quality": "good",
-                    "skills_matched": [],
-                    "status": "new",
-                    "freshness": "active",
+                    "company": j.company, "title": j.title, "location": j.location,
+                    "experience": "", "posted": j.posted_date, "url": j.url,
+                    "platform": j.platform, "match_quality": "good",
+                    "skills_matched": [], "status": "new", "freshness": "active",
                 })
             added = add_jobs_to_active(entries)
             st.success(f"Saved {added} new jobs to your database!")

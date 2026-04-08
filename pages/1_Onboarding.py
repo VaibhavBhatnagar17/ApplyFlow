@@ -5,23 +5,31 @@ from engine.resume_parser import (
     extract_experience_years, extract_name_from_text,
     extract_email_from_text, extract_phone_from_text,
 )
-from engine.state import save_profile, load_profile
+from engine.state import save_profile, load_profile, save_resume_text, load_resume_text
+from engine.guard import require_login, sidebar_user_info, get_username
 
 st.set_page_config(page_title="Onboarding | ApplyFlow", page_icon="📝", layout="wide")
+sidebar_user_info()
+require_login()
+
+username = get_username()
+
 st.title("Onboarding")
 st.caption("Upload your resume and set your preferences to get personalized job matches.")
 
-existing_profile, existing_prefs = load_profile()
+existing_profile, existing_prefs = load_profile(username)
+saved_resume = load_resume_text(username)
 
 # --- Resume Upload ---
 st.subheader("Step 1: Upload Resume")
-uploaded = st.file_uploader("Upload your resume (PDF)", type=["pdf"])
 
 extracted_skills = []
 extracted_name = ""
 extracted_email = ""
 extracted_phone = ""
 extracted_years = 0
+
+uploaded = st.file_uploader("Upload your resume (PDF)", type=["pdf"])
 
 if uploaded:
     with st.spinner("Parsing resume..."):
@@ -33,6 +41,8 @@ if uploaded:
             extracted_email = extract_email_from_text(text)
             extracted_phone = extract_phone_from_text(text)
 
+            save_resume_text(text, username)
+
             st.success(f"Extracted {len(extracted_skills)} skills from resume")
             if extracted_skills:
                 st.write("**Detected skills:**", ", ".join(extracted_skills))
@@ -40,6 +50,10 @@ if uploaded:
                 st.text(text[:3000])
         except Exception as e:
             st.error(f"Could not parse PDF: {e}")
+elif saved_resume:
+    st.info("Resume previously uploaded and saved.")
+    with st.expander("View saved resume text"):
+        st.text(saved_resume[:3000])
 
 # --- Profile Form ---
 st.subheader("Step 2: Your Details")
@@ -79,20 +93,17 @@ with st.form("profile_form"):
     github = st.text_input("GitHub URL", value=existing_profile.github_url if existing_profile else "")
     relocate = st.checkbox("Willing to relocate", value=existing_profile.willing_to_relocate if existing_profile else True)
 
-    # --- Preferences ---
     st.markdown("---")
     st.subheader("Step 3: Job Preferences")
 
     pref_col1, pref_col2 = st.columns(2)
     with pref_col1:
         target_titles = st.multiselect(
-            "Target Roles",
-            options=TARGET_ROLES,
+            "Target Roles", options=TARGET_ROLES,
             default=(existing_prefs.target_titles if existing_prefs else TARGET_ROLES[:6]),
         )
         target_locations = st.multiselect(
-            "Target Locations",
-            options=TARGET_LOCATIONS,
+            "Target Locations", options=TARGET_LOCATIONS,
             default=(existing_prefs.target_locations if existing_prefs else TARGET_LOCATIONS[:10]),
         )
     with pref_col2:
@@ -138,6 +149,6 @@ with st.form("profile_form"):
             excluded_companies=[c.strip() for c in excluded_cos.split(",") if c.strip()],
             preferred_companies=[c.strip() for c in preferred_cos.split(",") if c.strip()],
         )
-        save_profile(profile, prefs)
+        save_profile(profile, prefs, username)
         st.success("Profile saved! Head to the Dashboard to see your matched jobs.")
         st.balloons()
