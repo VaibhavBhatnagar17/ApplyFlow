@@ -40,6 +40,19 @@ good = sum(1 for r in results if 0.5 <= r.score < 0.75)
 stretch = sum(1 for r in results if r.score < 0.5)
 applied_count = len(applied_ids)
 
+
+# --- Personalization Context ---
+with st.expander("Personalization from your onboarding profile", expanded=False):
+    c1, c2 = st.columns(2)
+    with c1:
+        st.write(f"**Target roles:** {', '.join(prefs.target_titles[:5])}")
+        st.write(f"**Target locations:** {', '.join(prefs.target_locations[:5])}")
+        st.write(f"**Core skills used for scoring:** {', '.join(profile.core_skills[:8])}")
+    with c2:
+        st.write(f"**Preferred companies:** {', '.join(prefs.preferred_companies[:5]) or 'None'}")
+        st.write(f"**Excluded companies:** {', '.join(prefs.excluded_companies[:5]) or 'None'}")
+        st.write(f"**Min match threshold:** {int(prefs.min_match_score*100)}%")
+
 c1, c2, c3, c4 = st.columns(4)
 c1.metric("Total Jobs", total)
 c2.metric("Excellent Match", excellent)
@@ -127,6 +140,8 @@ for i, r in enumerate(filtered):
         with cols[3]:
             if job.skills_matched:
                 st.caption(", ".join(job.skills_matched[:3]))
+            if r.reasons:
+                st.caption(r.reasons[0])
         with cols[4]:
             st.caption(job.freshness or job.platform)
         with cols[5]:
