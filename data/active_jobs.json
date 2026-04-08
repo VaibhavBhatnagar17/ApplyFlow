@@ -1,0 +1,2618 @@
+{
+  "search_date": "2026-04-08",
+  "search_criteria": {
+    "experience_min": 4,
+    "experience_max": 8,
+    "roles": [
+      "ML Engineer",
+      "Senior ML Engineer",
+      "Data Scientist",
+      "AI Engineer",
+      "Applied Scientist",
+      "NLP Engineer",
+      "CV Engineer",
+      "GenAI Engineer",
+      "MLOps Engineer"
+    ],
+    "locations": [
+      "Bangalore",
+      "Hyderabad",
+      "Mumbai",
+      "Delhi NCR",
+      "Pune",
+      "Chennai",
+      "Remote"
+    ],
+    "level": "Mid-Senior"
+  },
+  "market_summary": {
+    "total_ml_jobs_bangalore_linkedin": 10600,
+    "mid_senior_level": 8472,
+    "senior_ml_engineer_bangalore": 79,
+    "on_site": 8333,
+    "hybrid": 2058,
+    "remote": 271,
+    "mlops_bangalore_glassdoor": 935,
+    "data_scientist_bangalore_naukri": 8905,
+    "remote_ml_india_linkedin": 1000,
+    "top_hiring_companies": {
+      "Google": 63,
+      "Microsoft": 56,
+      "Infosys": 28,
+      "LinkedIn": 21,
+      "Deloitte": 7,
+      "Uber": 4,
+      "Roku": 4,
+      "SAP": 3,
+      "AB InBev GCC": 2,
+      "Quantiphi": 2
+    },
+    "search_expanded_on": "2026-04-08",
+    "total_after_expansion": 146
+  },
+  "verified_listings": [
+    {
+      "company": "Expedia Group",
+      "title": "ML Engineer III (Full-Stack Gen AI & Agentic Systems)",
+      "location": "Bangalore",
+      "experience": "7+ years",
+      "posted": "2026-02-24",
+      "url": "https://careers.expediagroup.com/job/machine-learning-engineer-iii-full-stack-gen-ai-amp-agentic-systems/bangalore-bangalore/R-101898/",
+      "platform": "workday",
+      "match_quality": "excellent",
+      "skills_matched": [
+        "LLM",
+        "RAG",
+        "Agents",
+        "Python",
+        "PyTorch",
+        "AWS",
+        "Docker"
+      ],
+      "status": "applied",
+      "freshness": "active"
+    },
+    {
+      "company": "Expedia Group",
+      "title": "Senior ML Engineer (Full-Stack Gen AI & Agentic Systems)",
+      "location": "Bangalore",
+      "experience": "5+ years",
+      "posted": "2026-04-08",
+      "url": "https://in.linkedin.com/jobs/senior-machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "excellent",
+      "skills_matched": [
+        "LLM",
+        "RAG",
+        "Agents",
+        "GenAI"
+      ],
+      "status": "new",
+      "freshness": "3 hours ago"
+    },
+    {
+      "company": "Expedia Group",
+      "title": "Machine Learning Engineer III (Insurance)",
+      "location": "Bangalore",
+      "experience": "5+ years",
+      "posted": "2026-03-10",
+      "url": "https://careers.expediagroup.com/job/machine-learning-engineer-iii/bangalore-bangalore/R-101745/",
+      "platform": "workday",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "Python",
+        "Production ML"
+      ],
+      "status": "new",
+      "freshness": "active"
+    },
+    {
+      "company": "Uber",
+      "title": "Senior Machine Learning Engineer - Applied AI",
+      "location": "Bangalore",
+      "experience": "5+ years",
+      "posted": "2026-03-08",
+      "url": "https://www.uber.com/global/en/careers/list/151767/",
+      "platform": "uber_careers",
+      "match_quality": "excellent",
+      "skills_matched": [
+        "ML",
+        "GenAI",
+        "LLM",
+        "Python",
+        "PyTorch",
+        "Production ML"
+      ],
+      "status": "new",
+      "freshness": "1 month ago"
+    },
+    {
+      "company": "Uber",
+      "title": "Staff ML Engineer - Applied AI",
+      "location": "Bangalore",
+      "experience": "10+ years",
+      "posted": "2026-03-01",
+      "url": "https://www.uber.com/global/en/careers/list/142400/",
+      "platform": "uber_careers",
+      "match_quality": "stretch",
+      "skills_matched": [
+        "ML",
+        "GenAI",
+        "LLM",
+        "Python",
+        "PyTorch"
+      ],
+      "status": "new",
+      "freshness": "1 month ago"
+    },
+    {
+      "company": "Uber",
+      "title": "Senior ML Engineer, Product Platform & Data Eng",
+      "location": "Bangalore",
+      "experience": "5+ years",
+      "posted": "2026-03-08",
+      "url": "https://www.uber.com/global/en/careers/list/156713/",
+      "platform": "uber_careers",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "Python",
+        "Production ML"
+      ],
+      "status": "new",
+      "freshness": "1 month ago"
+    },
+    {
+      "company": "Uber",
+      "title": "Senior ML Engineer, Customer Obsession",
+      "location": "Bangalore",
+      "experience": "5+ years",
+      "posted": "2026-03-11",
+      "url": "https://in.linkedin.com/jobs/senior-machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "Production ML",
+        "Personalization"
+      ],
+      "status": "new",
+      "freshness": "4 weeks ago"
+    },
+    {
+      "company": "Google",
+      "title": "Software Engineer, AI/ML",
+      "location": "Bangalore",
+      "experience": "5+ years",
+      "posted": "2026-04-01",
+      "url": "https://www.google.com/about/careers/applications/jobs/results?location=Bangalore+India&q=machine+learning",
+      "platform": "google_careers",
+      "match_quality": "excellent",
+      "skills_matched": [
+        "ML",
+        "AI",
+        "Python",
+        "Production ML"
+      ],
+      "status": "new",
+      "freshness": "1 week ago"
+    },
+    {
+      "company": "Google",
+      "title": "Software Engineer III, AI/ML, Search Intelligence",
+      "location": "Bangalore",
+      "experience": "4+ years",
+      "posted": "2026-04-01",
+      "url": "https://www.google.com/about/careers/applications/jobs/results?location=Bangalore+India&q=machine+learning",
+      "platform": "google_careers",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "Search",
+        "NLP"
+      ],
+      "status": "new",
+      "freshness": "1 week ago"
+    },
+    {
+      "company": "Google",
+      "title": "Artificial Intelligence Safety Data Scientist, Trust and Safety",
+      "location": "Bangalore",
+      "experience": "5+ years",
+      "posted": "2026-04-07",
+      "url": "https://in.linkedin.com/jobs/machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "good",
+      "skills_matched": [
+        "AI",
+        "ML",
+        "Safety"
+      ],
+      "status": "new",
+      "freshness": "1 day ago"
+    },
+    {
+      "company": "Microsoft",
+      "title": "Applied Scientist II - Search (NLP)",
+      "location": "Bangalore",
+      "experience": "5+ years",
+      "posted": "2026-03-25",
+      "url": "https://careers.microsoft.com/v2/global/en/locations/bengaluru.html",
+      "platform": "microsoft_careers",
+      "match_quality": "excellent",
+      "skills_matched": [
+        "NLP",
+        "ML",
+        "Deep Learning",
+        "Search"
+      ],
+      "status": "new",
+      "freshness": "active"
+    },
+    {
+      "company": "Microsoft",
+      "title": "Principal Software Engineer - CoreAI Agentic Core Services",
+      "location": "Hyderabad / Bangalore",
+      "experience": "8+ years",
+      "posted": "2026-04-07",
+      "url": "https://careers.microsoft.com/v2/global/en/locations/bengaluru.html",
+      "platform": "microsoft_careers",
+      "match_quality": "stretch",
+      "skills_matched": [
+        "AI",
+        "Agents",
+        "ML",
+        "Production"
+      ],
+      "status": "new",
+      "freshness": "1 day ago"
+    },
+    {
+      "company": "LinkedIn",
+      "title": "Sr. Staff Software Engineer, Machine Learning",
+      "location": "Bangalore",
+      "experience": "8+ years",
+      "posted": "2026-04-08",
+      "url": "https://in.linkedin.com/jobs/senior-machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "stretch",
+      "skills_matched": [
+        "ML",
+        "Production ML"
+      ],
+      "status": "new",
+      "freshness": "5 hours ago"
+    },
+    {
+      "company": "LinkedIn",
+      "title": "Senior Software Engineer, Data Science",
+      "location": "Bangalore",
+      "experience": "5+ years",
+      "posted": "2026-04-01",
+      "url": "https://in.linkedin.com/jobs/machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "good",
+      "skills_matched": [
+        "Data Science",
+        "ML",
+        "Python"
+      ],
+      "status": "new",
+      "freshness": "1 week ago"
+    },
+    {
+      "company": "LinkedIn",
+      "title": "Staff Software Engineer, Machine Learning",
+      "location": "Bangalore",
+      "experience": "7+ years",
+      "posted": "2026-04-01",
+      "url": "https://in.linkedin.com/jobs/machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "stretch",
+      "skills_matched": [
+        "ML",
+        "Production ML"
+      ],
+      "status": "new",
+      "freshness": "1 week ago"
+    },
+    {
+      "company": "Apple",
+      "title": "Senior Machine Learning Engineer, Search & AI",
+      "location": "Bangalore",
+      "experience": "5+ years",
+      "posted": "2026-03-08",
+      "url": "https://in.linkedin.com/jobs/senior-machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "excellent",
+      "skills_matched": [
+        "ML",
+        "Search",
+        "AI",
+        "NLP"
+      ],
+      "status": "new",
+      "freshness": "1 month ago"
+    },
+    {
+      "company": "Apple",
+      "title": "AI/Machine Learning Engineer",
+      "location": "Bangalore",
+      "experience": "5+ years",
+      "posted": "2026-03-25",
+      "url": "https://in.linkedin.com/jobs/machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "good",
+      "skills_matched": [
+        "AI",
+        "ML"
+      ],
+      "status": "new",
+      "freshness": "2 weeks ago"
+    },
+    {
+      "company": "Apple",
+      "title": "Machine Learning Software Engineer",
+      "location": "Bangalore",
+      "experience": "5+ years",
+      "posted": "2026-02-08",
+      "url": "https://in.linkedin.com/jobs/machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "Python"
+      ],
+      "status": "new",
+      "freshness": "2 months ago"
+    },
+    {
+      "company": "Flipkart",
+      "title": "Data Scientist",
+      "location": "Bangalore",
+      "experience": "4+ years",
+      "posted": "2026-03-25",
+      "url": "https://in.linkedin.com/jobs/machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "Data Science",
+        "PySpark"
+      ],
+      "status": "new",
+      "freshness": "2 weeks ago"
+    },
+    {
+      "company": "Flipkart",
+      "title": "Senior Data Scientist",
+      "location": "Bangalore",
+      "experience": "5+ years",
+      "posted": "2026-03-25",
+      "url": "https://in.linkedin.com/jobs/machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "Data Science",
+        "Recommendation"
+      ],
+      "status": "new",
+      "freshness": "2 weeks ago"
+    },
+    {
+      "company": "Roku",
+      "title": "Senior Software Engineer, Machine Learning",
+      "location": "Bangalore",
+      "experience": "5+ years",
+      "posted": "2026-04-05",
+      "url": "https://in.linkedin.com/jobs/senior-machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "Python",
+        "Spark"
+      ],
+      "status": "new",
+      "freshness": "3 days ago"
+    },
+    {
+      "company": "Roku",
+      "title": "Senior Software Engineer, ML - Data Platforms",
+      "location": "Bangalore",
+      "experience": "5+ years",
+      "posted": "2026-04-07",
+      "url": "https://in.linkedin.com/jobs/senior-machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "Data Platforms"
+      ],
+      "status": "new",
+      "freshness": "1 day ago"
+    },
+    {
+      "company": "Roku",
+      "title": "Senior Software Engineer, ML Content Platform",
+      "location": "Bangalore",
+      "experience": "5+ years",
+      "posted": "2026-04-01",
+      "url": "https://in.linkedin.com/jobs/senior-machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "Content",
+        "Recommendation"
+      ],
+      "status": "new",
+      "freshness": "1 week ago"
+    },
+    {
+      "company": "Roku",
+      "title": "Sr. Manager, Machine Learning",
+      "location": "Bangalore",
+      "experience": "8+ years",
+      "posted": "2026-03-18",
+      "url": "https://in.linkedin.com/jobs/senior-machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "stretch",
+      "skills_matched": [
+        "ML",
+        "Leadership"
+      ],
+      "status": "new",
+      "freshness": "3 weeks ago"
+    },
+    {
+      "company": "Tekion Corp",
+      "title": "Senior Machine Learning Engineer",
+      "location": "Bangalore",
+      "experience": "5+ years",
+      "posted": "2026-04-01",
+      "url": "https://in.linkedin.com/jobs/senior-machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "Production ML"
+      ],
+      "status": "new",
+      "freshness": "1 week ago"
+    },
+    {
+      "company": "Deloitte",
+      "title": "Gen AI Engineer - Consultant",
+      "location": "Bangalore / Hyderabad / Pune",
+      "experience": "4+ years",
+      "posted": "2026-03-25",
+      "url": "https://usijobs.deloitte.com/en_US/careersUSI/JobDetail/USI-EH26-Consulting-AI-E-HCI-Consultant-Gen-AI-Engineer/317564",
+      "platform": "deloitte_careers",
+      "match_quality": "excellent",
+      "skills_matched": [
+        "LLM",
+        "Agents",
+        "LangChain",
+        "CrewAI",
+        "Vector Search"
+      ],
+      "status": "new",
+      "freshness": "active"
+    },
+    {
+      "company": "Deloitte",
+      "title": "Machine Vision Engineer - Consultant",
+      "location": "Bangalore / Hyderabad",
+      "experience": "3-7 years",
+      "posted": "2026-03-25",
+      "url": "https://usijobs.deloitte.com/en_US/careersUSI/JobDetail/USI-EH26-Consulting-AI-E-HCI-Consultant-Machine-Vision-Engineer/305603",
+      "platform": "deloitte_careers",
+      "match_quality": "excellent",
+      "skills_matched": [
+        "Computer Vision",
+        "Python",
+        "C++",
+        "GPU"
+      ],
+      "status": "new",
+      "freshness": "active"
+    },
+    {
+      "company": "Deloitte",
+      "title": "Data Scientist - Consultant",
+      "location": "Bangalore / Hyderabad",
+      "experience": "4+ years",
+      "posted": "2026-03-25",
+      "url": "https://usijobs.deloitte.com/",
+      "platform": "deloitte_careers",
+      "match_quality": "good",
+      "skills_matched": [
+        "Python",
+        "ML",
+        "Cloud",
+        "Deep Learning"
+      ],
+      "status": "new",
+      "freshness": "active"
+    },
+    {
+      "company": "Deloitte",
+      "title": "Executive - ML/AI",
+      "location": "Bangalore / Hyderabad",
+      "experience": "4+ years",
+      "posted": "2026-03-21",
+      "url": "https://southasiacareers.deloitte.com/job/Bengaluru-Executive-Machine-learning%2C-Artificial-Intelligence-Bengaluru-TTC-DOMESTIC/52902044/",
+      "platform": "deloitte_careers",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "AI",
+        "PyTorch",
+        "TensorFlow",
+        "LLM"
+      ],
+      "status": "new",
+      "freshness": "active"
+    },
+    {
+      "company": "Walmart Global Tech",
+      "title": "Senior ML Engineer",
+      "location": "Bangalore",
+      "experience": "5+ years",
+      "posted": "2026-04-01",
+      "url": "https://tech.walmart.com/content/walmart-global-tech/en_us/careers.html",
+      "platform": "walmart_careers",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "PySpark",
+        "Production ML"
+      ],
+      "status": "new",
+      "freshness": "1 week ago"
+    },
+    {
+      "company": "Walmart Global Tech",
+      "title": "ML Engineer III",
+      "location": "Bangalore",
+      "experience": "4+ years",
+      "posted": "2026-04-01",
+      "url": "https://tech.walmart.com/content/walmart-global-tech/en_us/careers.html",
+      "platform": "walmart_careers",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "Python"
+      ],
+      "status": "new",
+      "freshness": "1 week ago"
+    },
+    {
+      "company": "Walmart Global Tech",
+      "title": "Staff Data Scientist",
+      "location": "Bangalore",
+      "experience": "6-10 years",
+      "posted": "2026-03-15",
+      "url": "https://www.jobaaj.com/job/walmart-global-tech-india-staff-data-scientist-machine-learning-engineer-bengaluru-bangalore-karnataka-8-to-10-years-753571",
+      "platform": "jobaaj",
+      "match_quality": "stretch",
+      "skills_matched": [
+        "ML",
+        "Data Science",
+        "PySpark"
+      ],
+      "status": "new",
+      "freshness": "active"
+    },
+    {
+      "company": "Cloudflare",
+      "title": "Senior Machine Learning Engineer",
+      "location": "Bangalore",
+      "experience": "5+ years",
+      "posted": "2026-04-08",
+      "url": "https://in.linkedin.com/jobs/senior-machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "Production ML",
+        "Real-time"
+      ],
+      "status": "new",
+      "freshness": "2 hours ago"
+    },
+    {
+      "company": "S&P Global",
+      "title": "Senior Machine Learning Engineer",
+      "location": "Bangalore",
+      "experience": "5+ years",
+      "posted": "2026-04-01",
+      "url": "https://in.linkedin.com/jobs/senior-machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "NLP",
+        "Financial"
+      ],
+      "status": "new",
+      "freshness": "1 week ago"
+    },
+    {
+      "company": "DocuSign",
+      "title": "Senior Machine Learning Engineer",
+      "location": "Bangalore",
+      "experience": "5+ years",
+      "posted": "2026-04-01",
+      "url": "https://in.linkedin.com/jobs/senior-machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "NLP",
+        "Document AI"
+      ],
+      "status": "new",
+      "freshness": "1 week ago"
+    },
+    {
+      "company": "EarnIn",
+      "title": "Senior Machine Learning Engineer",
+      "location": "Bangalore",
+      "experience": "5+ years",
+      "posted": "2026-03-25",
+      "url": "https://in.linkedin.com/jobs/senior-machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "Fintech"
+      ],
+      "status": "new",
+      "freshness": "2 weeks ago"
+    },
+    {
+      "company": "Warner Bros. Discovery",
+      "title": "Senior Machine Learning Engineer",
+      "location": "Bangalore",
+      "experience": "5+ years",
+      "posted": "2026-04-01",
+      "url": "https://in.linkedin.com/jobs/senior-machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "Recommendation",
+        "Video AI"
+      ],
+      "status": "new",
+      "freshness": "1 week ago"
+    },
+    {
+      "company": "Warner Bros. Discovery",
+      "title": "Senior Machine Learning Engineer",
+      "location": "Bangalore East",
+      "experience": "5+ years",
+      "posted": "2026-04-01",
+      "url": "https://in.linkedin.com/jobs/senior-machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "Video AI",
+        "CV"
+      ],
+      "status": "new",
+      "freshness": "1 week ago"
+    },
+    {
+      "company": "Eightfold AI",
+      "title": "Senior Machine Learning Engineer",
+      "location": "Bangalore",
+      "experience": "5+ years",
+      "posted": "2026-04-01",
+      "url": "https://in.linkedin.com/jobs/senior-machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "AI",
+        "NLP"
+      ],
+      "status": "new",
+      "freshness": "1 week ago"
+    },
+    {
+      "company": "Sumo Logic",
+      "title": "Senior Machine Learning Engineer",
+      "location": "Bangalore",
+      "experience": "5+ years",
+      "posted": "2026-04-02",
+      "url": "https://in.linkedin.com/jobs/senior-machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "Observability"
+      ],
+      "status": "new",
+      "freshness": "6 days ago"
+    },
+    {
+      "company": "SolarWinds",
+      "title": "Senior ML Engineer \u2013 LLM & ML Systems",
+      "location": "Bangalore",
+      "experience": "5+ years",
+      "posted": "2026-04-01",
+      "url": "https://in.linkedin.com/jobs/senior-machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "excellent",
+      "skills_matched": [
+        "LLM",
+        "ML Systems",
+        "Production ML"
+      ],
+      "status": "new",
+      "freshness": "1 week ago"
+    },
+    {
+      "company": "Poppulo",
+      "title": "Senior ML Engineer \u2013 GenAI / Agentic Systems",
+      "location": "Bangalore",
+      "experience": "5+ years",
+      "posted": "2026-03-25",
+      "url": "https://in.linkedin.com/jobs/senior-machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "excellent",
+      "skills_matched": [
+        "GenAI",
+        "Agents",
+        "LLM",
+        "Production ML"
+      ],
+      "status": "new",
+      "freshness": "2 weeks ago"
+    },
+    {
+      "company": "Quantiphi",
+      "title": "Senior Machine Learning Engineer - Data Analytics",
+      "location": "Bangalore",
+      "experience": "5+ years",
+      "posted": "2026-04-07",
+      "url": "https://in.linkedin.com/jobs/senior-machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "Data Analytics"
+      ],
+      "status": "new",
+      "freshness": "1 day ago"
+    },
+    {
+      "company": "Quantiphi",
+      "title": "Senior Machine Learning Engineer",
+      "location": "Bangalore",
+      "experience": "5+ years",
+      "posted": "2026-03-18",
+      "url": "https://in.linkedin.com/jobs/senior-machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "CV"
+      ],
+      "status": "new",
+      "freshness": "3 weeks ago"
+    },
+    {
+      "company": "GE Vernova",
+      "title": "AI/ML Software Principal Engineer",
+      "location": "Bangalore",
+      "experience": "8+ years",
+      "posted": "2026-04-03",
+      "url": "https://in.linkedin.com/jobs/senior-machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "stretch",
+      "skills_matched": [
+        "AI",
+        "ML",
+        "Production ML"
+      ],
+      "status": "new",
+      "freshness": "5 days ago"
+    },
+    {
+      "company": "SAP",
+      "title": "Senior Data Scientist (BERT, GPT, PEFT, LoRA)",
+      "location": "Bangalore",
+      "experience": "5+ years",
+      "posted": "2026-04-01",
+      "url": "https://in.linkedin.com/jobs/senior-machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "excellent",
+      "skills_matched": [
+        "LLM",
+        "BERT",
+        "GPT",
+        "LoRA",
+        "NLP"
+      ],
+      "status": "new",
+      "freshness": "1 week ago"
+    },
+    {
+      "company": "AB InBev GCC India",
+      "title": "Senior Machine Learning Engineer",
+      "location": "Bangalore",
+      "experience": "5+ years",
+      "posted": "2026-04-01",
+      "url": "https://in.linkedin.com/jobs/senior-machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "Production ML"
+      ],
+      "status": "new",
+      "freshness": "1 week ago"
+    },
+    {
+      "company": "AB InBev GCC India",
+      "title": "Data Scientist",
+      "location": "Bangalore",
+      "experience": "4+ years",
+      "posted": "2026-04-01",
+      "url": "https://in.linkedin.com/jobs/machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "Data Science"
+      ],
+      "status": "new",
+      "freshness": "1 week ago"
+    },
+    {
+      "company": "Endava",
+      "title": "Senior Machine Learning Engineer",
+      "location": "Bangalore",
+      "experience": "5+ years",
+      "posted": "2026-03-25",
+      "url": "https://in.linkedin.com/jobs/senior-machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "Production ML"
+      ],
+      "status": "new",
+      "freshness": "2 weeks ago"
+    },
+    {
+      "company": "Omnissa",
+      "title": "Senior Machine Learning Engineer",
+      "location": "Bangalore",
+      "experience": "5+ years",
+      "posted": "2026-03-18",
+      "url": "https://in.linkedin.com/jobs/senior-machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML"
+      ],
+      "status": "new",
+      "freshness": "3 weeks ago"
+    },
+    {
+      "company": "Haleon",
+      "title": "Senior Machine Learning Engineer",
+      "location": "Bangalore",
+      "experience": "5+ years",
+      "posted": "2026-03-25",
+      "url": "https://in.linkedin.com/jobs/senior-machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "Healthcare"
+      ],
+      "status": "new",
+      "freshness": "2 weeks ago"
+    },
+    {
+      "company": "Intuit",
+      "title": "Senior Staff Software Engineer - Platform",
+      "location": "Bangalore",
+      "experience": "7+ years",
+      "posted": "2026-04-01",
+      "url": "https://in.linkedin.com/jobs/senior-machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "stretch",
+      "skills_matched": [
+        "ML",
+        "Platform",
+        "AI"
+      ],
+      "status": "new",
+      "freshness": "1 week ago"
+    },
+    {
+      "company": "Arctic Wolf",
+      "title": "Principal Developer, AI Detections",
+      "location": "Bangalore",
+      "experience": "5+ years",
+      "posted": "2026-04-01",
+      "url": "https://in.linkedin.com/jobs/senior-machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "good",
+      "skills_matched": [
+        "AI",
+        "ML",
+        "Detection"
+      ],
+      "status": "new",
+      "freshness": "1 week ago"
+    },
+    {
+      "company": "Swiggy",
+      "title": "Software Dev Engineer II",
+      "location": "Bangalore",
+      "experience": "4+ years",
+      "posted": "2026-04-01",
+      "url": "https://in.linkedin.com/jobs/machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "Production ML"
+      ],
+      "status": "new",
+      "freshness": "1 week ago"
+    },
+    {
+      "company": "eBay",
+      "title": "Data Scientist",
+      "location": "Bangalore",
+      "experience": "4+ years",
+      "posted": "2026-03-25",
+      "url": "https://in.linkedin.com/jobs/machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "Recommendation"
+      ],
+      "status": "new",
+      "freshness": "2 weeks ago"
+    },
+    {
+      "company": "eBay",
+      "title": "Machine Learning Engineer",
+      "location": "Bangalore",
+      "experience": "4+ years",
+      "posted": "2026-03-25",
+      "url": "https://in.linkedin.com/jobs/machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "Recommendation",
+        "Search"
+      ],
+      "status": "new",
+      "freshness": "2 weeks ago"
+    },
+    {
+      "company": "eBay",
+      "title": "Software Engineer, ML Systems",
+      "location": "Bangalore",
+      "experience": "4+ years",
+      "posted": "2026-03-25",
+      "url": "https://in.linkedin.com/jobs/machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "ML Systems"
+      ],
+      "status": "new",
+      "freshness": "2 weeks ago"
+    },
+    {
+      "company": "Citi",
+      "title": "Data Scientist",
+      "location": "Bangalore",
+      "experience": "4+ years",
+      "posted": "2026-03-25",
+      "url": "https://in.linkedin.com/jobs/machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "Data Science",
+        "Fintech"
+      ],
+      "status": "new",
+      "freshness": "2 weeks ago"
+    },
+    {
+      "company": "Cisco",
+      "title": "Data Scientist",
+      "location": "Bangalore",
+      "experience": "4+ years",
+      "posted": "2026-04-01",
+      "url": "https://in.linkedin.com/jobs/machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "Data Science"
+      ],
+      "status": "new",
+      "freshness": "1 week ago"
+    },
+    {
+      "company": "Cisco",
+      "title": "Full Stack Engineer \u2014 AI/ML",
+      "location": "Hyderabad",
+      "experience": "4+ years",
+      "posted": "2026-03-25",
+      "url": "https://offcampusjobs4u.com/cisco-recruitment-2026-full-stack-engineer-ai-ml-hyderabad/",
+      "platform": "cisco_careers",
+      "match_quality": "good",
+      "skills_matched": [
+        "AI",
+        "ML",
+        "LLM",
+        "Python",
+        "MLOps"
+      ],
+      "status": "new",
+      "freshness": "active"
+    },
+    {
+      "company": "Kotak Mahindra Bank",
+      "title": "Data Scientist",
+      "location": "Bangalore",
+      "experience": "5+ years",
+      "posted": "2026-04-02",
+      "url": "https://in.linkedin.com/jobs/machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "GenAI",
+        "LLM"
+      ],
+      "status": "new",
+      "freshness": "6 days ago"
+    },
+    {
+      "company": "IBM",
+      "title": "ML Engineer - Advanced Analytics",
+      "location": "Bangalore",
+      "experience": "4+ years",
+      "posted": "2026-04-01",
+      "url": "https://in.linkedin.com/jobs/machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "Analytics"
+      ],
+      "status": "new",
+      "freshness": "1 week ago"
+    },
+    {
+      "company": "Nielsen",
+      "title": "AI/ML Data Scientist I",
+      "location": "Bangalore",
+      "experience": "4+ years",
+      "posted": "2026-04-08",
+      "url": "https://in.linkedin.com/jobs/machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "good",
+      "skills_matched": [
+        "AI",
+        "ML",
+        "Data Science"
+      ],
+      "status": "new",
+      "freshness": "4 hours ago"
+    },
+    {
+      "company": "Capgemini Invent",
+      "title": "Senior Data Scientist",
+      "location": "Bangalore",
+      "experience": "5+ years",
+      "posted": "2026-04-01",
+      "url": "https://in.linkedin.com/jobs/machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "Data Science"
+      ],
+      "status": "new",
+      "freshness": "1 week ago"
+    },
+    {
+      "company": "Autodesk",
+      "title": "Data Engineer (Python, Spark)",
+      "location": "Bangalore",
+      "experience": "4+ years",
+      "posted": "2026-03-25",
+      "url": "https://in.linkedin.com/jobs/machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "good",
+      "skills_matched": [
+        "Python",
+        "Spark",
+        "PySpark"
+      ],
+      "status": "new",
+      "freshness": "2 weeks ago"
+    },
+    {
+      "company": "Siemens Energy",
+      "title": "AI/Machine Learning Engineer",
+      "location": "Gurgaon",
+      "experience": "4.5+ years",
+      "posted": "2026-03-15",
+      "url": "https://jobs.siemens-energy.com/en_US/CareersMarketplace/FolderDetail/AI-Machine-Learning-Engineer/290463",
+      "platform": "siemens_careers",
+      "match_quality": "excellent",
+      "skills_matched": [
+        "NLP",
+        "RAG",
+        "LLM",
+        "GenAI",
+        "Python",
+        "AWS/Azure"
+      ],
+      "status": "new",
+      "freshness": "active"
+    },
+    {
+      "company": "Schneider Electric",
+      "title": "Lead MLOps Engineer",
+      "location": "Bangalore",
+      "experience": "5+ years",
+      "posted": "2026-03-15",
+      "url": "https://careers.se.com/jobs/95790?lang=en-us",
+      "platform": "schneider_careers",
+      "match_quality": "good",
+      "skills_matched": [
+        "MLOps",
+        "Production ML"
+      ],
+      "status": "new",
+      "freshness": "active"
+    },
+    {
+      "company": "Adobe",
+      "title": "Machine Learning Engineer 4",
+      "location": "Bangalore / Noida",
+      "experience": "5+ years",
+      "posted": "2026-03-01",
+      "url": "https://careers.adobe.com/us/en/job/R166657/Machine-Learning-Engineer-4",
+      "platform": "adobe_careers",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "CV",
+        "GenAI"
+      ],
+      "status": "new",
+      "freshness": "active"
+    },
+    {
+      "company": "First Advantage",
+      "title": "Senior Machine Learning Engineer - Remote",
+      "location": "Bangalore (Remote)",
+      "experience": "5+ years",
+      "posted": "2026-03-08",
+      "url": "https://in.linkedin.com/jobs/senior-machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "Remote"
+      ],
+      "status": "new",
+      "freshness": "1 month ago"
+    },
+    {
+      "company": "Loopio",
+      "title": "Senior Machine Learning Engineer",
+      "location": "Bangalore",
+      "experience": "5+ years",
+      "posted": "2026-04-01",
+      "url": "https://in.linkedin.com/jobs/senior-machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "NLP"
+      ],
+      "status": "new",
+      "freshness": "1 week ago"
+    },
+    {
+      "company": "Aarki",
+      "title": "Senior Machine Learning Engineer",
+      "location": "Bangalore",
+      "experience": "5+ years",
+      "posted": "2026-04-01",
+      "url": "https://in.linkedin.com/jobs/senior-machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "AdTech"
+      ],
+      "status": "new",
+      "freshness": "1 week ago"
+    },
+    {
+      "company": "Meril",
+      "title": "Senior Machine Learning Engineer",
+      "location": "Bangalore",
+      "experience": "5+ years",
+      "posted": "2026-04-03",
+      "url": "https://in.linkedin.com/jobs/senior-machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "Healthcare/Medical"
+      ],
+      "status": "new",
+      "freshness": "5 days ago"
+    },
+    {
+      "company": "Zorba AI",
+      "title": "Machine Learning Engineer (5+ yrs)",
+      "location": "Bangalore",
+      "experience": "5+ years",
+      "posted": "2026-04-01",
+      "url": "https://in.linkedin.com/jobs/senior-machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML"
+      ],
+      "status": "new",
+      "freshness": "1 week ago"
+    },
+    {
+      "company": "Waters Corporation",
+      "title": "Senior Research Machine Learning Engineer",
+      "location": "Bangalore",
+      "experience": "5+ years",
+      "posted": "2026-03-08",
+      "url": "https://in.linkedin.com/jobs/senior-machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "Research"
+      ],
+      "status": "new",
+      "freshness": "1 month ago"
+    },
+    {
+      "company": "Voicegain",
+      "title": "Senior Machine Learning Engineer",
+      "location": "Bangalore",
+      "experience": "5+ years",
+      "posted": "2026-03-18",
+      "url": "https://in.linkedin.com/jobs/senior-machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "NLP",
+        "Speech"
+      ],
+      "status": "new",
+      "freshness": "3 weeks ago"
+    },
+    {
+      "company": "Media.net",
+      "title": "Data Scientist",
+      "location": "Bangalore",
+      "experience": "4+ years",
+      "posted": "2026-04-03",
+      "url": "https://in.linkedin.com/jobs/machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "AdTech"
+      ],
+      "status": "new",
+      "freshness": "5 days ago"
+    },
+    {
+      "company": "ABB",
+      "title": "Data Scientist",
+      "location": "Bangalore",
+      "experience": "4+ years",
+      "posted": "2026-04-01",
+      "url": "https://in.linkedin.com/jobs/machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "Industrial"
+      ],
+      "status": "new",
+      "freshness": "1 week ago"
+    },
+    {
+      "company": "Koch",
+      "title": "Data Scientist",
+      "location": "Bangalore",
+      "experience": "4+ years",
+      "posted": "2026-04-01",
+      "url": "https://in.linkedin.com/jobs/machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "Data Science"
+      ],
+      "status": "new",
+      "freshness": "1 week ago"
+    },
+    {
+      "company": "Snapmint",
+      "title": "Data Scientist",
+      "location": "Bangalore",
+      "experience": "4+ years",
+      "posted": "2026-04-01",
+      "url": "https://in.linkedin.com/jobs/machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "Fintech"
+      ],
+      "status": "new",
+      "freshness": "1 week ago"
+    },
+    {
+      "company": "Coface",
+      "title": "Data Scientist",
+      "location": "Bangalore",
+      "experience": "4+ years",
+      "posted": "2026-04-01",
+      "url": "https://in.linkedin.com/jobs/machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "Insurance/Risk"
+      ],
+      "status": "new",
+      "freshness": "1 week ago"
+    },
+    {
+      "company": "Infosys",
+      "title": "AI, ML GenAI Engineer",
+      "location": "Bangalore",
+      "experience": "4+ years",
+      "posted": "2026-04-07",
+      "url": "https://in.linkedin.com/jobs/machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "good",
+      "skills_matched": [
+        "AI",
+        "ML",
+        "GenAI"
+      ],
+      "status": "new",
+      "freshness": "1 day ago"
+    },
+    {
+      "company": "Blue Yonder",
+      "title": "Data Scientist I",
+      "location": "Bangalore",
+      "experience": "4+ years",
+      "posted": "2026-04-07",
+      "url": "https://in.linkedin.com/jobs/machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "Supply Chain"
+      ],
+      "status": "new",
+      "freshness": "1 day ago"
+    },
+    {
+      "company": "EXL",
+      "title": "Data Scientist",
+      "location": "Bangalore",
+      "experience": "4+ years",
+      "posted": "2026-04-01",
+      "url": "https://in.linkedin.com/jobs/machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "Analytics"
+      ],
+      "status": "new",
+      "freshness": "1 week ago"
+    },
+    {
+      "company": "Rakuten Symphony",
+      "title": "Data Scientist",
+      "location": "Bangalore",
+      "experience": "4+ years",
+      "posted": "2026-03-25",
+      "url": "https://in.linkedin.com/jobs/machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "Telecom"
+      ],
+      "status": "new",
+      "freshness": "2 weeks ago"
+    },
+    {
+      "company": "LimeChat",
+      "title": "Software Development Engineer",
+      "location": "Bangalore",
+      "experience": "4+ years",
+      "posted": "2026-04-01",
+      "url": "https://in.linkedin.com/jobs/machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "good",
+      "skills_matched": [
+        "AI",
+        "Chatbot",
+        "LLM"
+      ],
+      "status": "new",
+      "freshness": "1 week ago"
+    },
+    {
+      "company": "EdgeVerve (Infosys)",
+      "title": "Machine Learning Engineer",
+      "location": "Bangalore",
+      "experience": "4+ years",
+      "posted": "2026-04-01",
+      "url": "https://in.linkedin.com/jobs/machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML"
+      ],
+      "status": "new",
+      "freshness": "1 week ago"
+    },
+    {
+      "company": "Bellatrix Aerospace",
+      "title": "Machine Learning Engineer",
+      "location": "Bangalore",
+      "experience": "4+ years",
+      "posted": "2026-04-01",
+      "url": "https://in.linkedin.com/jobs/machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "Aerospace"
+      ],
+      "status": "new",
+      "freshness": "1 week ago"
+    },
+    {
+      "company": "GreedyGame",
+      "title": "Founding Data Scientist / Lead",
+      "location": "Bangalore",
+      "experience": "4+ years",
+      "posted": "2026-04-01",
+      "url": "https://in.linkedin.com/jobs/machine-learning-engineer-jobs-bengaluru",
+      "platform": "linkedin",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "Data Science",
+        "Leadership"
+      ],
+      "status": "new",
+      "freshness": "1 week ago"
+    },
+    {
+      "company": "Groww",
+      "title": "Data Scientist",
+      "location": "Bangalore",
+      "experience": "3-5 years",
+      "posted": "2026-04-01",
+      "url": "https://groww.in/careers",
+      "platform": "groww_careers",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "Data Science",
+        "Spark"
+      ],
+      "status": "new",
+      "freshness": "active"
+    },
+    {
+      "company": "Groww",
+      "title": "ML Engineer I",
+      "location": "Bangalore",
+      "experience": "4+ years",
+      "posted": "2026-04-01",
+      "url": "https://job-boards.eu.greenhouse.io/growwreferrals/jobs/4720358101",
+      "platform": "greenhouse",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML"
+      ],
+      "status": "new",
+      "freshness": "active"
+    },
+    {
+      "company": "Morgan Stanley",
+      "title": "AI/ML Engineering, Associate",
+      "location": "Bangalore",
+      "experience": "4+ years",
+      "posted": "2026-03-25",
+      "url": "https://www.morganstanley.com/careers/career-opportunities-search",
+      "platform": "morgan_stanley_careers",
+      "match_quality": "good",
+      "skills_matched": [
+        "AI",
+        "ML",
+        "Fintech"
+      ],
+      "status": "new",
+      "freshness": "active"
+    },
+    {
+      "company": "Morgan Stanley",
+      "title": "Solution Architect, GenAI, VP",
+      "location": "Bangalore",
+      "experience": "8+ years",
+      "posted": "2026-03-25",
+      "url": "https://www.morganstanley.com/careers/career-opportunities-search",
+      "platform": "morgan_stanley_careers",
+      "match_quality": "stretch",
+      "skills_matched": [
+        "GenAI",
+        "Architecture"
+      ],
+      "status": "new",
+      "freshness": "active"
+    },
+    {
+      "company": "Kotak Mahindra Bank",
+      "title": "Data Science III - CVM CoE (GenAI)",
+      "location": "Bangalore",
+      "experience": "5+ years",
+      "posted": "2026-03-25",
+      "url": "https://www.kotak.bank.in/en/about-us/careers.html",
+      "platform": "kotak_careers",
+      "match_quality": "excellent",
+      "skills_matched": [
+        "GenAI",
+        "LLM",
+        "PyTorch",
+        "TensorFlow",
+        "MLOps"
+      ],
+      "status": "new",
+      "freshness": "closing soon"
+    },
+    {
+      "company": "Kotak Mahindra Bank",
+      "title": "Lead Data Scientist - Digital Banking",
+      "location": "Bangalore / Mumbai",
+      "experience": "6-12 years",
+      "posted": "2026-03-17",
+      "url": "https://www.foundit.in/job/lead-data-scientist-digital-banking-kotak-811-regional-sales-kotak-mahindra-bank-limited-bengaluru-bangalore-47281301",
+      "platform": "foundit",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "Data Science",
+        "AI"
+      ],
+      "status": "new",
+      "freshness": "active"
+    },
+    {
+      "company": "Cognizant",
+      "title": "MLOps Engineer",
+      "location": "Bangalore",
+      "experience": "5-14 years",
+      "posted": "2026-03-25",
+      "url": "https://careers.cognizant.com/us-en/jobs/00065996071/mlops-engineer/",
+      "platform": "cognizant_careers",
+      "match_quality": "good",
+      "skills_matched": [
+        "MLOps",
+        "AWS",
+        "Docker",
+        "CI/CD"
+      ],
+      "status": "new",
+      "freshness": "active"
+    },
+    {
+      "company": "Meta",
+      "title": "Software Engineer, Machine Learning",
+      "location": "Bangalore",
+      "experience": "6+ years",
+      "posted": "2026-04-01",
+      "url": "https://www.metacareers.com/jobs/953117303587864/",
+      "platform": "meta_careers",
+      "match_quality": "excellent",
+      "skills_matched": [
+        "ML",
+        "Python",
+        "PyTorch",
+        "Production ML"
+      ],
+      "status": "new",
+      "freshness": "active"
+    },
+    {
+      "company": "Meta",
+      "title": "AI/ML Engineer (Python, PyTorch, TensorFlow, YOLO)",
+      "location": "Bangalore",
+      "experience": "2+ years",
+      "posted": "2026-04-01",
+      "url": "https://www.metacareers.com/",
+      "platform": "meta_careers",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "PyTorch",
+        "TensorFlow",
+        "YOLO",
+        "Computer Vision",
+        "NLP"
+      ],
+      "status": "new",
+      "freshness": "active"
+    },
+    {
+      "company": "Meta",
+      "title": "Partner Engineer, Generative AI",
+      "location": "Bangalore",
+      "experience": "2+ years",
+      "posted": "2026-04-01",
+      "url": "https://www.metacareers.com/",
+      "platform": "meta_careers",
+      "match_quality": "excellent",
+      "skills_matched": [
+        "GenAI",
+        "LLM",
+        "PyTorch",
+        "Deep Learning",
+        "NLP"
+      ],
+      "status": "new",
+      "freshness": "active"
+    },
+    {
+      "company": "Amazon",
+      "title": "Applied Scientist, India Machine Learning",
+      "location": "Bangalore",
+      "experience": "3+ years",
+      "posted": "2026-04-01",
+      "url": "https://www.amazon.jobs/en/jobs/3089323/applied-scientist-india-machine-learning",
+      "platform": "amazon_careers",
+      "match_quality": "excellent",
+      "skills_matched": [
+        "ML",
+        "Deep Learning",
+        "Python",
+        "Production ML"
+      ],
+      "status": "new",
+      "freshness": "active"
+    },
+    {
+      "company": "Amazon",
+      "title": "Senior Applied Scientist, International Machine Learning",
+      "location": "Bangalore",
+      "experience": "5+ years",
+      "posted": "2026-03-25",
+      "url": "https://www.amazon.jobs/en/search?base_query=machine+learning&country=IND",
+      "platform": "amazon_careers",
+      "match_quality": "excellent",
+      "skills_matched": [
+        "ML",
+        "Deep Learning",
+        "NLP",
+        "Production ML"
+      ],
+      "status": "new",
+      "freshness": "active"
+    },
+    {
+      "company": "Amazon",
+      "title": "Applied Scientist, Central Machine Learning",
+      "location": "Bangalore",
+      "experience": "3+ years",
+      "posted": "2026-03-15",
+      "url": "https://www.amazon.jobs/jobs/10377873/applied-scientist-central-machine-learning",
+      "platform": "amazon_careers",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "Python",
+        "Deep Learning"
+      ],
+      "status": "new",
+      "freshness": "active"
+    },
+    {
+      "company": "NVIDIA",
+      "title": "Senior AI and ML Engineer",
+      "location": "Pune",
+      "experience": "5+ years",
+      "posted": "2026-03-25",
+      "url": "https://www.nvidia.com/en-us/about-nvidia/careers/",
+      "platform": "nvidia_careers",
+      "match_quality": "excellent",
+      "skills_matched": [
+        "LLM",
+        "Agentic AI",
+        "Python",
+        "Docker",
+        "Production ML"
+      ],
+      "status": "new",
+      "freshness": "active"
+    },
+    {
+      "company": "NVIDIA",
+      "title": "Senior Software Engineer \u2013 Deep Learning and Computer Vision",
+      "location": "Pune",
+      "experience": "5+ years",
+      "posted": "2026-04-01",
+      "url": "https://in.linkedin.com/jobs/view/senior-software-engineer-deep-learning-and-computer-vision-at-nvidia-4334792519",
+      "platform": "linkedin",
+      "match_quality": "good",
+      "skills_matched": [
+        "Deep Learning",
+        "Computer Vision",
+        "Python"
+      ],
+      "status": "new",
+      "freshness": "1 week ago"
+    },
+    {
+      "company": "Google DeepMind",
+      "title": "Research Scientist, Agents",
+      "location": "Bangalore",
+      "experience": "5+ years",
+      "posted": "2026-03-25",
+      "url": "https://deepmind.google/careers/",
+      "platform": "google_careers",
+      "match_quality": "excellent",
+      "skills_matched": [
+        "Agents",
+        "ML",
+        "LLM",
+        "Production ML"
+      ],
+      "status": "new",
+      "freshness": "2 weeks ago"
+    },
+    {
+      "company": "Google DeepMind",
+      "title": "Research Scientist, Language",
+      "location": "Bangalore",
+      "experience": "5+ years",
+      "posted": "2026-03-25",
+      "url": "https://deepmind.google/careers/",
+      "platform": "google_careers",
+      "match_quality": "excellent",
+      "skills_matched": [
+        "NLP",
+        "LLM",
+        "ML",
+        "Deep Learning"
+      ],
+      "status": "new",
+      "freshness": "2 weeks ago"
+    },
+    {
+      "company": "Google",
+      "title": "Senior Data Scientist, Product, Google Play",
+      "location": "Bangalore",
+      "experience": "5+ years",
+      "posted": "2026-04-01",
+      "url": "https://in.linkedin.com/jobs/view/senior-data-scientist-product-google-play-at-google-4176413754",
+      "platform": "linkedin",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "Data Science",
+        "Python",
+        "SQL"
+      ],
+      "status": "new",
+      "freshness": "1 week ago"
+    },
+    {
+      "company": "OpenAI",
+      "title": "AI Deployment Engineer, Startups (India Remote)",
+      "location": "Bangalore (Remote)",
+      "experience": "5+ years",
+      "posted": "2026-04-01",
+      "url": "http://www.openai.com/careers/ai-deployment-engineer-startups-india-remote/",
+      "platform": "openai_careers",
+      "match_quality": "excellent",
+      "skills_matched": [
+        "LLM",
+        "GenAI",
+        "Python",
+        "AI",
+        "Production ML"
+      ],
+      "status": "new",
+      "freshness": "active"
+    },
+    {
+      "company": "OpenAI",
+      "title": "AI Deployment Engineer (Delhi/Mumbai/Bangalore)",
+      "location": "Bangalore",
+      "experience": "6+ years",
+      "posted": "2026-04-01",
+      "url": "https://openai.com/careers/ai-deployment-engineer-delhi-india/",
+      "platform": "openai_careers",
+      "match_quality": "excellent",
+      "skills_matched": [
+        "LLM",
+        "GenAI",
+        "Python",
+        "AI"
+      ],
+      "status": "new",
+      "freshness": "active"
+    },
+    {
+      "company": "Anthropic",
+      "title": "ML Platform Engineer (India)",
+      "location": "Bangalore",
+      "experience": "5+ years",
+      "posted": "2026-04-01",
+      "url": "https://www.anthropic.com/careers",
+      "platform": "anthropic_careers",
+      "match_quality": "excellent",
+      "skills_matched": [
+        "LLM",
+        "ML",
+        "Python",
+        "Production ML",
+        "MLOps"
+      ],
+      "status": "new",
+      "freshness": "opening soon"
+    },
+    {
+      "company": "Netflix",
+      "title": "Senior Data Scientist - India",
+      "location": "Mumbai",
+      "experience": "4-10 years",
+      "posted": "2026-03-25",
+      "url": "https://explore.jobs.netflix.net/careers?domain=netflix.com&location=India",
+      "platform": "netflix_careers",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "Data Science",
+        "Python",
+        "Spark",
+        "SQL"
+      ],
+      "status": "new",
+      "freshness": "active"
+    },
+    {
+      "company": "Stripe",
+      "title": "Data Scientist",
+      "location": "Bangalore",
+      "experience": "6+ years",
+      "posted": "2026-04-01",
+      "url": "https://stripe.com/in/jobs/listing/data-scientist/7357460",
+      "platform": "stripe_careers",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "Python",
+        "SQL",
+        "Spark",
+        "Data Science"
+      ],
+      "status": "new",
+      "freshness": "active"
+    },
+    {
+      "company": "Razorpay",
+      "title": "Lead Data Scientist",
+      "location": "Bangalore",
+      "experience": "7+ years",
+      "posted": "2026-04-01",
+      "url": "https://razorpay.com/jobs/",
+      "platform": "razorpay_careers",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "NLP",
+        "Production ML",
+        "Python"
+      ],
+      "status": "new",
+      "freshness": "active"
+    },
+    {
+      "company": "Razorpay",
+      "title": "Machine Learning Engineer",
+      "location": "Bangalore",
+      "experience": "2+ years",
+      "posted": "2026-04-01",
+      "url": "https://razorpay.com/jobs/",
+      "platform": "razorpay_careers",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "Docker",
+        "CI/CD",
+        "NLP",
+        "Computer Vision"
+      ],
+      "status": "new",
+      "freshness": "active"
+    },
+    {
+      "company": "PhonePe",
+      "title": "Data Scientist (6-8 Years)",
+      "location": "Bangalore",
+      "experience": "6-8 years",
+      "posted": "2026-04-01",
+      "url": "https://www.phonepe.com/careers/",
+      "platform": "phonepe_careers",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "Spark",
+        "AWS",
+        "MLOps",
+        "Production ML"
+      ],
+      "status": "new",
+      "freshness": "active"
+    },
+    {
+      "company": "Sarvam AI",
+      "title": "Machine Learning Engineer",
+      "location": "Bangalore",
+      "experience": "3-6 years",
+      "posted": "2026-03-25",
+      "url": "https://www.sarvam.ai/careers",
+      "platform": "sarvam_careers",
+      "match_quality": "excellent",
+      "skills_matched": [
+        "ML",
+        "Deep Learning",
+        "PyTorch",
+        "Python",
+        "GPU"
+      ],
+      "status": "new",
+      "freshness": "active"
+    },
+    {
+      "company": "Sarvam AI",
+      "title": "ML Ops Engineer",
+      "location": "Bangalore",
+      "experience": "3-5 years",
+      "posted": "2026-03-25",
+      "url": "https://www.sarvam.ai/careers",
+      "platform": "sarvam_careers",
+      "match_quality": "good",
+      "skills_matched": [
+        "MLOps",
+        "Docker",
+        "Production ML"
+      ],
+      "status": "new",
+      "freshness": "active"
+    },
+    {
+      "company": "Sarvam AI",
+      "title": "ML Engineer \u2013 Computer Vision & VLM",
+      "location": "Bangalore",
+      "experience": "3-5 years",
+      "posted": "2026-03-25",
+      "url": "https://www.sarvam.ai/careers",
+      "platform": "sarvam_careers",
+      "match_quality": "excellent",
+      "skills_matched": [
+        "Computer Vision",
+        "ML",
+        "PyTorch",
+        "Deep Learning"
+      ],
+      "status": "new",
+      "freshness": "active"
+    },
+    {
+      "company": "Krutrim (Ola AI)",
+      "title": "Lead Generative AI Research Engineer",
+      "location": "Bangalore",
+      "experience": "5-10 years",
+      "posted": "2026-03-25",
+      "url": "https://www.jobaaj.com/job/krutrim-lead-generative-ai-research-engineer-ai-labs-bengaluru-bangalore-karnataka-5-to-10-years-674982",
+      "platform": "jobaaj",
+      "match_quality": "excellent",
+      "skills_matched": [
+        "GenAI",
+        "LLM",
+        "ML",
+        "Deep Learning"
+      ],
+      "status": "new",
+      "freshness": "active"
+    },
+    {
+      "company": "Databricks",
+      "title": "Sr. Solutions Engineer AI/ML",
+      "location": "Bangalore / Mumbai",
+      "experience": "3+ years",
+      "posted": "2026-04-01",
+      "url": "https://databricks.com/company/careers/field-engineering---other/sr-solutions-engineer-ai-ml-8027752002",
+      "platform": "databricks_careers",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "GenAI",
+        "RAG",
+        "LLM",
+        "AWS",
+        "Production ML"
+      ],
+      "status": "new",
+      "freshness": "active"
+    },
+    {
+      "company": "Databricks",
+      "title": "Senior Software Engineer - Search (ML)",
+      "location": "Bangalore",
+      "experience": "5+ years",
+      "posted": "2026-04-01",
+      "url": "https://www.databricks.com/company/careers/engineering---pipeline/senior-software-engineer---search-7841782002",
+      "platform": "databricks_careers",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "NLP",
+        "Search",
+        "Production ML"
+      ],
+      "status": "new",
+      "freshness": "active"
+    },
+    {
+      "company": "Swiggy",
+      "title": "AI Engineer III",
+      "location": "Bangalore",
+      "experience": "3+ years",
+      "posted": "2026-02-01",
+      "url": "https://www.ventureloop.com/ventureloop/jobdetail.php?jobid=2980992",
+      "platform": "swiggy_careers",
+      "match_quality": "excellent",
+      "skills_matched": [
+        "Agentic AI",
+        "LLM",
+        "Python",
+        "Production ML"
+      ],
+      "status": "new",
+      "freshness": "active"
+    },
+    {
+      "company": "Qure.ai",
+      "title": "LLM Engineer",
+      "location": "Bangalore",
+      "experience": "2-5 years",
+      "posted": "2026-03-25",
+      "url": "https://jobs.qure.ai/",
+      "platform": "qure_careers",
+      "match_quality": "excellent",
+      "skills_matched": [
+        "LLM",
+        "LangChain",
+        "RAG",
+        "Python",
+        "AWS"
+      ],
+      "status": "new",
+      "freshness": "active"
+    },
+    {
+      "company": "Qure.ai",
+      "title": "AI Product Engineer",
+      "location": "Bangalore",
+      "experience": "4+ years",
+      "posted": "2026-03-25",
+      "url": "https://jobs.qure.ai/",
+      "platform": "qure_careers",
+      "match_quality": "excellent",
+      "skills_matched": [
+        "GenAI",
+        "LLM",
+        "RAG",
+        "Agents",
+        "Healthcare"
+      ],
+      "status": "new",
+      "freshness": "active"
+    },
+    {
+      "company": "SAP",
+      "title": "Development Architect, Agentic AI",
+      "location": "Bangalore",
+      "experience": "8+ years",
+      "posted": "2026-03-25",
+      "url": "https://www.flexa.careers/in/jobs/sap-development-architect-agentic-ai-69a802f454fd1b3ad5a6864e",
+      "platform": "sap_careers",
+      "match_quality": "good",
+      "skills_matched": [
+        "Agentic AI",
+        "LangChain",
+        "LangGraph",
+        "CrewAI",
+        "Python",
+        "GenAI"
+      ],
+      "status": "new",
+      "freshness": "active"
+    },
+    {
+      "company": "Wipro",
+      "title": "Senior Gen AI Architect",
+      "location": "Bangalore",
+      "experience": "10+ years",
+      "posted": "2026-01-16",
+      "url": "https://careers.wipro.com/job/Senior-Gen-AI-Architect/117288-en_US/",
+      "platform": "wipro_careers",
+      "match_quality": "stretch",
+      "skills_matched": [
+        "GenAI",
+        "Python",
+        "PyTorch",
+        "TensorFlow",
+        "MLOps",
+        "Production ML"
+      ],
+      "status": "new",
+      "freshness": "active"
+    },
+    {
+      "company": "NTT DATA",
+      "title": "AI Tech Lead / AI Architect",
+      "location": "Bangalore",
+      "experience": "7+ years",
+      "posted": "2026-03-09",
+      "url": "https://careers-inc.nttdata.com/job/Bangalore-AI-Developers-KA/1371233800/",
+      "platform": "nttdata_careers",
+      "match_quality": "good",
+      "skills_matched": [
+        "RAG",
+        "Agentic AI",
+        "Python",
+        "Production ML",
+        "GenAI"
+      ],
+      "status": "new",
+      "freshness": "1 month ago"
+    },
+    {
+      "company": "J.P. Morgan",
+      "title": "Applied AI ML Lead - GenAI",
+      "location": "Bangalore",
+      "experience": "5+ years",
+      "posted": "2026-04-01",
+      "url": "https://www.talentify.io/job/applied-ai-ml-lead-genai-bengaluru-karnataka-in-jp-morgan-210649484",
+      "platform": "jpmorgan_careers",
+      "match_quality": "good",
+      "skills_matched": [
+        "GenAI",
+        "ML",
+        "PyTorch",
+        "TensorFlow",
+        "Python",
+        "AWS"
+      ],
+      "status": "new",
+      "freshness": "active"
+    },
+    {
+      "company": "Goldman Sachs",
+      "title": "AI Engineer (Analyst)",
+      "location": "Bangalore",
+      "experience": "4+ years",
+      "posted": "2026-04-01",
+      "url": "https://www.goldmansachs.com/careers/",
+      "platform": "goldman_careers",
+      "match_quality": "good",
+      "skills_matched": [
+        "AI",
+        "ML",
+        "Python"
+      ],
+      "status": "new",
+      "freshness": "active"
+    },
+    {
+      "company": "Airbnb",
+      "title": "Senior Software Engineer - Payments AI/ML Foundation",
+      "location": "Bangalore",
+      "experience": "7+ years",
+      "posted": "2026-04-01",
+      "url": "https://careers.airbnb.com/positions/7581839/",
+      "platform": "airbnb_careers",
+      "match_quality": "good",
+      "skills_matched": [
+        "AI",
+        "ML",
+        "Python",
+        "Production ML"
+      ],
+      "status": "new",
+      "freshness": "active"
+    },
+    {
+      "company": "Booking.com",
+      "title": "Machine Learning Engineer II - T&S",
+      "location": "Bangalore",
+      "experience": "5+ years",
+      "posted": "2026-04-01",
+      "url": "https://jobs.booking.com/bookingholdings-coe/jobs/13069?lang=en-us",
+      "platform": "booking_careers",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "Python",
+        "Production ML"
+      ],
+      "status": "new",
+      "freshness": "active"
+    },
+    {
+      "company": "Grab",
+      "title": "Senior Machine Learning Engineer - Mobility",
+      "location": "Bangalore",
+      "experience": "3-5 years",
+      "posted": "2026-03-06",
+      "url": "https://grab.careers/",
+      "platform": "grab_careers",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "Deep Learning",
+        "PyTorch",
+        "Python",
+        "GenAI"
+      ],
+      "status": "new",
+      "freshness": "1 month ago"
+    },
+    {
+      "company": "Atlassian",
+      "title": "Machine Learning Engineer - ITSM (AIOps)",
+      "location": "Bangalore",
+      "experience": "5+ years",
+      "posted": "2026-04-01",
+      "url": "https://www.atlassian.com/company/careers",
+      "platform": "atlassian_careers",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "PyTorch",
+        "TensorFlow",
+        "MLOps",
+        "GenAI",
+        "Python"
+      ],
+      "status": "new",
+      "freshness": "active"
+    },
+    {
+      "company": "Atlassian",
+      "title": "Senior Machine Learning Engineer - Jira AI",
+      "location": "Bangalore",
+      "experience": "8+ years",
+      "posted": "2026-04-01",
+      "url": "https://join.atlassian.com/atlassian-talent-community/jobs/22140",
+      "platform": "atlassian_careers",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "LLM",
+        "Spark",
+        "AWS",
+        "Production ML"
+      ],
+      "status": "new",
+      "freshness": "active"
+    },
+    {
+      "company": "Atlassian",
+      "title": "ML Software Engineer - AI & ML Platform",
+      "location": "Bangalore",
+      "experience": "5+ years",
+      "posted": "2026-04-01",
+      "url": "https://www.atlassian.com/company/careers/details/22915",
+      "platform": "atlassian_careers",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "MLOps",
+        "Production ML",
+        "CI/CD"
+      ],
+      "status": "new",
+      "freshness": "active"
+    },
+    {
+      "company": "Paytm",
+      "title": "Data Scientist",
+      "location": "Noida / Bangalore",
+      "experience": "4+ years",
+      "posted": "2026-04-01",
+      "url": "https://paytm.com/careers",
+      "platform": "paytm_careers",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "Python",
+        "PyTorch",
+        "TensorFlow",
+        "SQL"
+      ],
+      "status": "new",
+      "freshness": "active"
+    },
+    {
+      "company": "Myntra",
+      "title": "Data Scientist",
+      "location": "Bangalore",
+      "experience": "5+ years",
+      "posted": "2026-04-01",
+      "url": "https://www.myntra.com/careers",
+      "platform": "myntra_careers",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "NLP",
+        "Computer Vision",
+        "LLM",
+        "GenAI"
+      ],
+      "status": "new",
+      "freshness": "active"
+    },
+    {
+      "company": "CRED",
+      "title": "AI/ML Engineer (L4)",
+      "location": "Hyderabad",
+      "experience": "3+ years",
+      "posted": "2026-04-01",
+      "url": "https://careers.cred.club/",
+      "platform": "cred_careers",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "Python",
+        "Agentic AI",
+        "Production ML"
+      ],
+      "status": "new",
+      "freshness": "active"
+    },
+    {
+      "company": "Qualcomm",
+      "title": "AI/ML Staff Engineer - Developer Advocate",
+      "location": "Bangalore",
+      "experience": "5+ years",
+      "posted": "2026-01-15",
+      "url": "https://careers.qualcomm.com/careers/job/446705895046-ai-ml-staff-engineer-developer-advocate-bangalore-karnataka-india",
+      "platform": "qualcomm_careers",
+      "match_quality": "good",
+      "skills_matched": [
+        "AI",
+        "ML",
+        "Python",
+        "LLM",
+        "GenAI"
+      ],
+      "status": "new",
+      "freshness": "active"
+    },
+    {
+      "company": "Qualcomm",
+      "title": "AI/ML Senior Engineer",
+      "location": "Bangalore",
+      "experience": "5+ years",
+      "posted": "2026-01-15",
+      "url": "https://careers.qualcomm.com/careers/job/446714909341-ai-ml-senior-engineer-bangalore-karnataka-india",
+      "platform": "qualcomm_careers",
+      "match_quality": "good",
+      "skills_matched": [
+        "AI",
+        "ML",
+        "Deep Learning"
+      ],
+      "status": "new",
+      "freshness": "active"
+    },
+    {
+      "company": "Intel",
+      "title": "AI Frameworks Engineer",
+      "location": "Bangalore",
+      "experience": "6+ years",
+      "posted": "2026-04-01",
+      "url": "https://www.intel.com/content/www/us/en/jobs/search.html",
+      "platform": "intel_careers",
+      "match_quality": "good",
+      "skills_matched": [
+        "PyTorch",
+        "TensorFlow",
+        "ML",
+        "Python",
+        "LLM"
+      ],
+      "status": "new",
+      "freshness": "active"
+    },
+    {
+      "company": "Samsung Research",
+      "title": "Senior AI/ML Engineer - On-Device AI",
+      "location": "Bangalore",
+      "experience": "5+ years",
+      "posted": "2026-04-01",
+      "url": "https://www.samsung.com/in/about-us/careers/",
+      "platform": "samsung_careers",
+      "match_quality": "good",
+      "skills_matched": [
+        "LLM",
+        "Agentic AI",
+        "ML",
+        "Python",
+        "Production ML"
+      ],
+      "status": "new",
+      "freshness": "active"
+    },
+    {
+      "company": "Bosch",
+      "title": "AI/ML Engineer",
+      "location": "Hyderabad",
+      "experience": "5-8 years",
+      "posted": "2026-04-01",
+      "url": "https://www.bosch.com/careers/",
+      "platform": "bosch_careers",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "GenAI",
+        "LangChain",
+        "RAG",
+        "Python",
+        "MLOps",
+        "AWS"
+      ],
+      "status": "new",
+      "freshness": "active"
+    },
+    {
+      "company": "Wayfair",
+      "title": "Senior Machine Learning Scientist",
+      "location": "Bangalore",
+      "experience": "5+ years",
+      "posted": "2026-03-25",
+      "url": "https://www.wayfair.com/careers/",
+      "platform": "wayfair_careers",
+      "match_quality": "good",
+      "skills_matched": [
+        "ML",
+        "Recommendation",
+        "Search",
+        "Production ML"
+      ],
+      "status": "new",
+      "freshness": "active"
+    },
+    {
+      "company": "BCG X",
+      "title": "AI Engineer / Senior AI Engineer - India",
+      "location": "Gurgaon / Mumbai",
+      "experience": "2+ years",
+      "posted": "2026-04-01",
+      "url": "https://careers.bcg.com/",
+      "platform": "bcg_careers",
+      "match_quality": "good",
+      "skills_matched": [
+        "GenAI",
+        "LLM",
+        "ML",
+        "Python",
+        "AWS"
+      ],
+      "status": "new",
+      "freshness": "active"
+    },
+    {
+      "company": "Tiger Analytics",
+      "title": "AI Engineer",
+      "location": "Bangalore",
+      "experience": "3+ years",
+      "posted": "2026-04-01",
+      "url": "https://tiger-analytics.sensehq.com/careers/jobs/56524",
+      "platform": "tiger_careers",
+      "match_quality": "good",
+      "skills_matched": [
+        "GenAI",
+        "Agents",
+        "ML",
+        "Python"
+      ],
+      "status": "new",
+      "freshness": "active"
+    },
+    {
+      "company": "Weights & Biases",
+      "title": "AI Engineer - India (Remote)",
+      "location": "India (Remote)",
+      "experience": "4-7 years",
+      "posted": "2026-04-01",
+      "url": "https://wandb.ai/careers",
+      "platform": "wandb_careers",
+      "match_quality": "excellent",
+      "skills_matched": [
+        "ML",
+        "GenAI",
+        "LLM",
+        "Python",
+        "Production ML"
+      ],
+      "status": "new",
+      "freshness": "active"
+    }
+  ],
+  "platform_search_links": {
+    "linkedin_ml_bangalore": "https://in.linkedin.com/jobs/machine-learning-engineer-jobs-bengaluru",
+    "linkedin_senior_ml_bangalore": "https://in.linkedin.com/jobs/senior-machine-learning-engineer-jobs-bengaluru",
+    "linkedin_ml_india": "https://in.linkedin.com/jobs/machine-learning-jobs",
+    "linkedin_remote_ml": "https://in.linkedin.com/jobs/remote-machine-learning-engineer-jobs",
+    "naukri_ml_bangalore": "https://www.naukri.com/machine-learning-jobs-in-bangalore?experience=4",
+    "naukri_ds_bangalore": "https://www.naukri.com/senior-data-scientist-jobs-in-bangalore",
+    "indeed_ml_bangalore": "https://in.indeed.com/q-machine-learning-engineer-l-bengaluru-jobs.html",
+    "glassdoor_mlops": "https://www.glassdoor.co.in/Job/bengaluru-mlops-engineer-jobs-SRCH_IL.0,9_IC2940587_KO10,24.htm",
+    "builtin_ml_bangalore": "https://builtin.com/jobs/as/india/bangalore/dev-engineering/search/machine-learning",
+    "cutshort_remote_ml": "https://cutshort.io/jobs/remote-machine-learning-ml-jobs",
+    "google_careers_ml_india": "https://www.google.com/about/careers/applications/jobs/results?location=Bangalore+India&q=machine+learning",
+    "amazon_ml_india": "https://www.amazon.jobs/en/search?base_query=machine+learning&country=IND",
+    "microsoft_bangalore": "https://careers.microsoft.com/v2/global/en/locations/bengaluru.html"
+  }
+}

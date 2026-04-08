@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.env
+data/user_state.json
+data/seen_jobs.json
+.DS_Store
+venv/
