@@ -1,37 +1,100 @@
-"""Open-source LLM helpers (Ollama-compatible) for insights and query expansion."""
+"""Managed LLM helpers (OpenRouter/OpenAI) for insights and query expansion."""
 
 from __future__ import annotations
 
 import json
+import os
 import requests
 
 
 class OpenSourceInsights:
-    def __init__(self, model: str = "llama3.1:8b", base_url: str = "http://localhost:11434"):
-        self.model = model
-        self.base_url = base_url.rstrip("/")
+    """Backwards-compatible LLM helper class.
+
+    Despite the legacy class name, this now supports managed providers:
+    - openrouter
+    - openai
+    """
+
+    def __init__(self, model: str | None = None, base_url: str | None = None):
+        self.provider = (self._cfg("LLM_PROVIDER", "openrouter") or "openrouter").strip().lower()
+        self.model = model or self._cfg("LLM_MODEL", self._default_model(self.provider))
+        self.base_url = (base_url or self._cfg("LLM_BASE_URL", self._default_base_url(self.provider))).rstrip("/")
+        self.timeout_s = int(self._cfg("LLM_TIMEOUT_SECONDS", "45"))
+        self.api_key = self._resolve_api_key(self.provider)
+
+    @staticmethod
+    def _cfg(key: str, default: str = "") -> str:
+        val = os.getenv(key)
+        if val:
+            return str(val).strip()
+        try:
+            import streamlit as st  # Lazy import to avoid hard dependency at module import time.
+
+            if key in st.secrets:
+                return str(st.secrets[key]).strip()
+        except Exception:
+            pass
+        return default
+
+    @staticmethod
+    def _default_model(provider: str) -> str:
+        if provider == "openai":
+            return "gpt-4o-mini"
+        return "openai/gpt-4o-mini"
+
+    @staticmethod
+    def _default_base_url(provider: str) -> str:
+        if provider == "openai":
+            return "https://api.openai.com/v1"
+        return "https://openrouter.ai/api/v1"
+
+    @staticmethod
+    def _resolve_api_key(provider: str) -> str:
+        if provider == "openai":
+            return OpenSourceInsights._cfg("OPENAI_API_KEY", "")
+        return OpenSourceInsights._cfg("OPENROUTER_API_KEY", "")
 
     def is_available(self) -> bool:
-        try:
-            r = requests.get(f"{self.base_url}/api/tags", timeout=2)
-            return r.status_code == 200
-        except Exception:
-            return False
+        return bool(self.api_key and self.base_url and self.model)
 
     def generate(self, prompt: str, system: str = "", temperature: float = 0.2) -> str:
+        if not self.is_available():
+            return ""
+        messages = []
+        if system:
+            messages.append({"role": "system", "content": system})
+        messages.append({"role": "user", "content": prompt})
+
         payload = {
             "model": self.model,
-            "prompt": prompt,
-            "system": system,
+            "messages": messages,
+            "temperature": temperature,
             "stream": False,
-            "options": {"temperature": temperature},
         }
+        headers = {
+            "Authorization": f"Bearer {self.api_key}",
+            "Content-Type": "application/json",
+        }
+        # OpenRouter supports optional routing metadata.
+        if self.provider == "openrouter":
+            headers["HTTP-Referer"] = self._cfg("LLM_APP_URL", "https://applyflow.local")
+            headers["X-Title"] = self._cfg("LLM_APP_NAME", "ApplyFlow")
+
         try:
-            r = requests.post(f"{self.base_url}/api/generate", json=payload, timeout=30)
+            r = requests.post(
+                f"{self.base_url}/chat/completions",
+                json=payload,
+                headers=headers,
+                timeout=self.timeout_s,
+            )
             if r.status_code != 200:
                 return ""
             data = r.json()
-            return (data.get("response") or "").strip()
+            choices = data.get("choices") or []
+            if not choices:
+                return ""
+            msg = choices[0].get("message") or {}
+            return (msg.get("content") or "").strip()
         except Exception:
             return ""
 
@@ -90,7 +153,7 @@ class OpenSourceInsights:
         )
 
         if not self.is_available():
-            return deterministic + "\n_Open-source LLM is not running locally. Showing deterministic insights._"
+            return deterministic + "\n_Managed LLM is not configured. Showing deterministic insights._"
 
         prompt = (
             "Analyze this job-match snapshot and provide concise actionable insights. "

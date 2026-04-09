@@ -1,6 +1,7 @@
 import streamlit as st
 import plotly.express as px
 import pandas as pd
+from dataclasses import asdict
 
 from engine.state import load_profile, load_active_jobs, save_application, load_applications
 from engine.job_model import JobListing
@@ -13,6 +14,7 @@ sidebar_user_info()
 require_login()
 
 username = get_username()
+
 st.title("Job Dashboard")
 
 profile, prefs = load_profile(username)
@@ -45,25 +47,24 @@ c2.metric("Excellent Match", excellent)
 c3.metric("Good Match", good)
 c4.metric("Applied", applied_count)
 
-# --- Open-source LLM Insights ---
-st.subheader("AI Insights (Open Source)")
-llm_model = st.text_input("LLM model", value="llama3.1:8b", help="Ollama model name")
-llm = OpenSourceInsights(model=llm_model)
-status_col1, status_col2 = st.columns([1, 3])
-with status_col1:
+# --- AI Insights (managed API) ---
+with st.expander("AI Insights (Managed API)", expanded=False):
+    llm = OpenSourceInsights()
+    st.caption(
+        f"Provider: `{llm.provider}` | Model: `{llm.model}`. "
+        "Set `OPENROUTER_API_KEY` or `OPENAI_API_KEY` to enable."
+    )
     if llm.is_available():
-        st.success("LLM online")
+        st.success("LLM configured and ready.")
     else:
-        st.warning("LLM offline")
-with status_col2:
-    st.caption("Runs locally via Ollama API at http://localhost:11434. App still works without it.")
+        st.info("LLM key not configured. Showing deterministic fallback insights.")
 
-if st.button("Generate AI Dashboard Insights", use_container_width=True):
-    with st.spinner("Generating insights..."):
-        st.session_state["dashboard_ai_insights"] = llm.dashboard_insights(profile, prefs, results)
+    if st.button("Generate AI Insights", use_container_width=True):
+        with st.spinner("Generating insights..."):
+            st.session_state["dashboard_ai_insights"] = llm.dashboard_insights(profile, prefs, results)
 
-if st.session_state.get("dashboard_ai_insights"):
-    st.markdown(st.session_state["dashboard_ai_insights"])
+    if st.session_state.get("dashboard_ai_insights"):
+        st.markdown(st.session_state["dashboard_ai_insights"])
 
 # --- Charts ---
 chart_col1, chart_col2 = st.columns(2)
@@ -137,8 +138,6 @@ for i, r in enumerate(filtered):
         with cols[0]:
             st.markdown(f"**{job.title}**")
             st.caption(job.company)
-            if r.reasons:
-                st.caption(r.reasons[0])
         with cols[1]:
             st.caption(f"📍 {job.location}")
             if job.experience:
