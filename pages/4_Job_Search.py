@@ -14,6 +14,28 @@ st.caption("Search across multiple websites with broader role/location combinati
 
 profile, prefs = state.load_profile(username)
 
+# --- Google Jobs / SerpAPI config (Option A + B + C) ---
+with st.expander("Google Jobs Settings (optional)", expanded=False):
+    st.markdown(
+        "**Google Jobs** requires a [SerpAPI](https://serpapi.com) key. "
+        "Free tier gives 100 searches/month. Without a key, Google Jobs uses "
+        "an unreliable HTML fallback. Other platforms work without any key."
+    )
+    saved_key = state.load_user_serpapi_key(username)
+    user_key = st.text_input(
+        "Your SerpAPI Key (stored per account, never shared)",
+        value=saved_key,
+        type="password",
+        help="Paste your personal SerpAPI key. It's stored only in your account data.",
+    )
+    if user_key != saved_key:
+        state.save_user_serpapi_key(user_key, username)
+        st.success("SerpAPI key saved.")
+
+    remaining = state.google_jobs_remaining(username)
+    daily_limit = state.GOOGLE_JOBS_DAILY_LIMIT
+    st.info(f"Google Jobs daily limit: **{remaining}** of **{daily_limit}** searches remaining today.")
+
 with st.form("search_form"):
     st.subheader("Search Strategy")
     col1, col2 = st.columns(2)
@@ -37,8 +59,13 @@ with st.form("search_form"):
         default_max_exp = (profile.years_experience + 5) if profile else 10
         max_experience = st.number_input("Max experience (years)", min_value=1, max_value=40, value=default_max_exp)
 
-    default_platforms = ["linkedin", "indeed", "naukri", "google_jobs"]
-    platforms = st.multiselect("Platforms", SUPPORTED_PLATFORMS, default=[p for p in default_platforms if p in SUPPORTED_PLATFORMS])
+    default_platforms = ["linkedin", "indeed", "naukri"]
+    platforms = st.multiselect(
+        "Platforms",
+        SUPPORTED_PLATFORMS,
+        default=[p for p in default_platforms if p in SUPPORTED_PLATFORMS],
+        help="google_jobs requires a SerpAPI key (see settings above).",
+    )
 
     search_btn = st.form_submit_button("Search Live Jobs", type="primary", use_container_width=True)
 
@@ -53,6 +80,19 @@ if search_btn:
         st.error("Please select at least one platform.")
         st.stop()
 
+    use_google = "google_jobs" in platforms
+    serpapi_key = state.load_user_serpapi_key(username)
+    google_remaining = state.google_jobs_remaining(username)
+    google_calls_used = 0
+
+    if use_google and not serpapi_key:
+        st.warning("Google Jobs selected but no SerpAPI key configured. It will use unreliable HTML fallback.")
+
+    if use_google and google_remaining <= 0:
+        st.warning(f"Google Jobs daily limit reached ({state.GOOGLE_JOBS_DAILY_LIMIT}/day). "
+                   "Skipping Google Jobs for this search.")
+        platforms = [p for p in platforms if p != "google_jobs"]
+
     scraper = JobScraper()
     all_jobs = []
     platform_counts = {}
@@ -61,19 +101,30 @@ if search_btn:
     with st.spinner(f"Searching {len(roles)} role(s) across {len(locations)} location(s)..."):
         for role in roles:
             for location in locations:
+                run_platforms = list(platforms)
+                if "google_jobs" in run_platforms and google_remaining - google_calls_used <= 0:
+                    run_platforms = [p for p in run_platforms if p != "google_jobs"]
+
                 batch = scraper.search(
                     title=role,
                     location=location,
-                    platforms=platforms,
+                    platforms=run_platforms,
                     max_jobs=max_jobs_per_combination,
                     posted_within_days=posted_within_days,
                     min_experience=min_experience,
                     max_experience=max_experience,
+                    serpapi_key=serpapi_key,
                 )
                 all_jobs.extend(batch)
                 diagnostics.extend(scraper.get_last_run_diagnostics())
                 for j in batch:
                     platform_counts[j.platform] = platform_counts.get(j.platform, 0) + 1
+
+                if "google_jobs" in run_platforms:
+                    google_calls_used += 1
+
+    if google_calls_used > 0:
+        state.increment_google_jobs_usage(username, google_calls_used)
 
     dedup = {}
     for j in all_jobs:
@@ -88,6 +139,9 @@ if search_btn:
         if platform_counts:
             count_parts = [f"{p}: {platform_counts.get(p, 0)}" for p in platforms]
             st.caption("Platform results -> " + " | ".join(count_parts))
+        if google_calls_used > 0:
+            new_remaining = state.google_jobs_remaining(username)
+            st.caption(f"Google Jobs searches used this run: {google_calls_used} | Remaining today: {new_remaining}")
         st.session_state["search_results"] = jobs
         st.session_state["search_diagnostics"] = diagnostics
 

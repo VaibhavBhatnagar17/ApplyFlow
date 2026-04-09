@@ -53,6 +53,7 @@ class JobScraper:
         posted_within_days: int = 14,
         min_experience: int = 0,
         max_experience: int = 40,
+        serpapi_key: str = "",
     ) -> list[JobListing]:
         if platforms is None:
             platforms = ["linkedin", "indeed", "naukri", "google_jobs"]
@@ -72,7 +73,7 @@ class JobScraper:
                 elif platform == "naukri":
                     platform_jobs = self._search_naukri(title, location, max_jobs=max_jobs, min_experience=min_experience)
                 elif platform == "google_jobs":
-                    platform_jobs = self._search_google_jobs(title, location, max_jobs=max_jobs, posted_within_days=posted_within_days)
+                    platform_jobs = self._search_google_jobs(title, location, max_jobs=max_jobs, posted_within_days=posted_within_days, serpapi_key=serpapi_key)
                 elif platform == "foundit":
                     platform_jobs = self._search_foundit(title, location, max_jobs=max_jobs)
                 elif platform == "hirist":
@@ -120,9 +121,10 @@ class JobScraper:
         location: str,
         max_jobs: int = 60,
         posted_within_days: int = 14,
+        serpapi_key: str = "",
     ) -> list[JobListing]:
         """Search Google Jobs using SerpAPI when available, else HTML fallback."""
-        api_key = os.getenv("SERPAPI_API_KEY", "").strip()
+        api_key = (serpapi_key or os.getenv("SERPAPI_API_KEY", "")).strip()
         if api_key:
             jobs = self._search_google_jobs_serpapi(
                 title=title,
