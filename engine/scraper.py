@@ -6,6 +6,7 @@ Supports multi-platform scraping, freshness filtering, and experience filtering.
 import re
 import time
 import logging
+import os
 from datetime import datetime, timedelta
 from urllib.parse import urlencode
 
@@ -30,6 +31,7 @@ SUPPORTED_PLATFORMS = [
     "linkedin",
     "indeed",
     "naukri",
+    "google_jobs",
     "foundit",
     "hirist",
     "wellfound",
@@ -40,6 +42,7 @@ class JobScraper:
     def __init__(self):
         self.session = requests.Session()
         self.session.headers.update(HEADERS)
+        self.last_run_diagnostics: list[dict] = []
 
     def search(
         self,
@@ -52,27 +55,51 @@ class JobScraper:
         max_experience: int = 40,
     ) -> list[JobListing]:
         if platforms is None:
-            platforms = ["linkedin", "indeed", "naukri"]
+            platforms = ["linkedin", "indeed", "naukri", "google_jobs"]
 
         all_jobs: list[JobListing] = []
+        diagnostics: list[dict] = []
 
         for platform in platforms:
+            platform_jobs: list[JobListing] = []
+            status = "ok"
+            note = ""
             try:
                 if platform == "linkedin":
-                    all_jobs.extend(self._search_linkedin(title, location, max_jobs=max_jobs))
+                    platform_jobs = self._search_linkedin(title, location, max_jobs=max_jobs)
                 elif platform == "indeed":
-                    all_jobs.extend(self._search_indeed(title, location, max_jobs=max_jobs, posted_within_days=posted_within_days))
+                    platform_jobs = self._search_indeed(title, location, max_jobs=max_jobs, posted_within_days=posted_within_days)
                 elif platform == "naukri":
-                    all_jobs.extend(self._search_naukri(title, location, max_jobs=max_jobs, min_experience=min_experience))
+                    platform_jobs = self._search_naukri(title, location, max_jobs=max_jobs, min_experience=min_experience)
+                elif platform == "google_jobs":
+                    platform_jobs = self._search_google_jobs(title, location, max_jobs=max_jobs, posted_within_days=posted_within_days)
                 elif platform == "foundit":
-                    all_jobs.extend(self._search_foundit(title, location, max_jobs=max_jobs))
+                    platform_jobs = self._search_foundit(title, location, max_jobs=max_jobs)
                 elif platform == "hirist":
-                    all_jobs.extend(self._search_hirist(title, location, max_jobs=max_jobs))
+                    platform_jobs = self._search_hirist(title, location, max_jobs=max_jobs)
                 elif platform == "wellfound":
-                    all_jobs.extend(self._search_wellfound(title, location, max_jobs=max_jobs))
+                    platform_jobs = self._search_wellfound(title, location, max_jobs=max_jobs)
+                else:
+                    status = "unsupported"
+                    note = "Platform not recognized by scraper."
                 time.sleep(0.8)
             except Exception as e:
+                status = "error"
+                note = str(e)
                 logger.warning(f"{platform} search failed: {e}")
+            if status == "ok" and not platform_jobs:
+                note = "No jobs parsed (possible block, empty market, or selector mismatch)."
+            diagnostics.append(
+                {
+                    "platform": platform,
+                    "status": status,
+                    "jobs_found": len(platform_jobs),
+                    "query_title": title,
+                    "query_location": location,
+                    "note": note,
+                }
+            )
+            all_jobs.extend(platform_jobs)
 
         unique = self._deduplicate(all_jobs)
         filtered = self._apply_filters(
@@ -81,7 +108,126 @@ class JobScraper:
             min_experience=min_experience,
             max_experience=max_experience,
         )
+        self.last_run_diagnostics = diagnostics
         return filtered[:max_jobs]
+
+    def get_last_run_diagnostics(self) -> list[dict]:
+        return list(self.last_run_diagnostics)
+
+    def _search_google_jobs(
+        self,
+        title: str,
+        location: str,
+        max_jobs: int = 60,
+        posted_within_days: int = 14,
+    ) -> list[JobListing]:
+        """Search Google Jobs using SerpAPI when available, else HTML fallback."""
+        api_key = os.getenv("SERPAPI_API_KEY", "").strip()
+        if api_key:
+            jobs = self._search_google_jobs_serpapi(
+                title=title,
+                location=location,
+                max_jobs=max_jobs,
+                posted_within_days=posted_within_days,
+                api_key=api_key,
+            )
+            if jobs:
+                return jobs
+        return self._search_google_jobs_html(title=title, location=location, max_jobs=max_jobs)
+
+    def _search_google_jobs_serpapi(
+        self,
+        title: str,
+        location: str,
+        max_jobs: int,
+        posted_within_days: int,
+        api_key: str,
+    ) -> list[JobListing]:
+        jobs: list[JobListing] = []
+        try:
+            params = {
+                "engine": "google_jobs",
+                "q": f"{title} jobs in {location}",
+                "hl": "en",
+                "api_key": api_key,
+            }
+            resp = self.session.get("https://serpapi.com/search.json", params=params, timeout=20)
+            if resp.status_code != 200:
+                return jobs
+            data = resp.json()
+            for item in (data.get("jobs_results") or [])[:max_jobs]:
+                jt = (item.get("title") or "").strip()
+                co = (item.get("company_name") or "").strip()
+                jl = (item.get("location") or location).strip()
+                ju = (item.get("apply_options") or [{}])[0].get("link", "") or item.get("related_links", [{}])[0].get("link", "")
+                desc = (item.get("description") or "").strip()
+                posted = ((item.get("detected_extensions") or {}).get("posted_at") or "").strip()
+                if not jt or not co:
+                    continue
+                jobs.append(
+                    JobListing(
+                        job_id=JobListing.generate_id(ju or f"google://{jt}-{co}-{jl}", jt, co),
+                        title=jt,
+                        company=co,
+                        location=jl,
+                        description=desc,
+                        url=ju,
+                        platform="google_jobs",
+                        posted_date=posted,
+                        experience=self._extract_experience(f"{jt} {desc}"),
+                    )
+                )
+            # Keep same freshness/exp post-filters handled by caller.
+        except Exception as e:
+            logger.warning(f"Google Jobs SerpAPI error: {e}")
+        return jobs
+
+    def _search_google_jobs_html(self, title: str, location: str, max_jobs: int = 60) -> list[JobListing]:
+        jobs: list[JobListing] = []
+        try:
+            params = {"q": f"{title} jobs in {location}", "ibp": "htl;jobs", "hl": "en"}
+            url = f"https://www.google.com/search?{urlencode(params)}"
+            resp = self.session.get(url, timeout=15)
+            if resp.status_code != 200:
+                return jobs
+            soup = BeautifulSoup(resp.text, "html.parser")
+            cards = soup.find_all("div", class_=re.compile(r"BjJfJf|PwjeAc|MQUd2b"))
+
+            for card in cards[:max_jobs]:
+                try:
+                    title_el = card.find("div", class_=re.compile(r"BjJfJf")) or card.find("h3") or card.find("h2")
+                    company_el = card.find("div", class_=re.compile(r"vNEEBe|Qk80Jf"))
+                    location_el = card.find("div", class_=re.compile(r"Qk80Jf"))
+                    link_el = card.find("a", href=True)
+
+                    jt = title_el.get_text(" ", strip=True) if title_el else ""
+                    co = company_el.get_text(" ", strip=True) if company_el else ""
+                    jl = location_el.get_text(" ", strip=True) if location_el else location
+                    ju = link_el.get("href", "") if link_el else ""
+                    if ju.startswith("/"):
+                        ju = f"https://www.google.com{ju}"
+                    if not jt or not co:
+                        continue
+
+                    full_text = card.get_text(" ", strip=True)
+                    jobs.append(
+                        JobListing(
+                            job_id=JobListing.generate_id(ju or f"google://{jt}-{co}-{jl}", jt, co),
+                            title=jt,
+                            company=co,
+                            location=jl,
+                            description=full_text,
+                            url=ju,
+                            platform="google_jobs",
+                            posted_date="",
+                            experience=self._extract_experience(full_text),
+                        )
+                    )
+                except Exception:
+                    continue
+        except Exception as e:
+            logger.warning(f"Google Jobs HTML error: {e}")
+        return jobs
 
     def _search_linkedin(self, title: str, location: str, max_jobs: int = 60) -> list[JobListing]:
         jobs: list[JobListing] = []

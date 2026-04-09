@@ -1,5 +1,4 @@
 import streamlit as st
-
 from engine.scraper import JobScraper, SUPPORTED_PLATFORMS
 import engine.state as state
 from engine.profile import TARGET_ROLES, TARGET_LOCATIONS
@@ -11,44 +10,35 @@ require_login()
 
 username = get_username()
 st.title("Live Job Search")
-st.caption("Search across multiple websites with role, freshness, and experience filters.")
+st.caption("Search across multiple websites with broader role/location combinations.")
 
 profile, prefs = state.load_profile(username)
 
 with st.form("search_form"):
-    st.subheader("Search Setup")
+    st.subheader("Search Strategy")
     col1, col2 = st.columns(2)
     with col1:
-        mode = st.radio("Role mode", ["Select multiple roles", "Custom role text"], horizontal=True)
-        if mode == "Select multiple roles":
-            default_roles = prefs.target_titles[:4] if prefs and prefs.target_titles else TARGET_ROLES[:4]
-            roles = st.multiselect("Roles (select multiple)", TARGET_ROLES, default=default_roles)
-        else:
-            custom = st.text_input("Custom role query", value=(prefs.target_titles[0] if prefs and prefs.target_titles else "Data Engineer"))
-            roles = [r.strip() for r in custom.split(",") if r.strip()]
-
+        default_roles = prefs.target_titles[:4] if prefs and prefs.target_titles else TARGET_ROLES[:4]
+        roles = st.multiselect("Roles (select multiple)", TARGET_ROLES, default=default_roles)
     with col2:
-        location = st.selectbox(
-            "Location",
-            TARGET_LOCATIONS,
-            index=0 if not prefs else min(
-                next((i for i, l in enumerate(TARGET_LOCATIONS) if l in prefs.target_locations), 0),
-                len(TARGET_LOCATIONS) - 1,
-            ),
-        )
+        default_locations = prefs.target_locations[:3] if prefs and prefs.target_locations else TARGET_LOCATIONS[:3]
+        locations = st.multiselect("Locations (select multiple)", TARGET_LOCATIONS, default=default_locations)
 
     st.subheader("Filters")
     f1, f2, f3, f4 = st.columns(4)
     with f1:
-        max_jobs = st.slider("Max jobs", 20, 300, 120, step=20)
+        max_jobs_per_combination = st.slider("Max jobs per role/location", 20, 200, 60, step=20)
     with f2:
         posted_within_days = st.selectbox("Freshness", [1, 3, 7, 14, 30], index=2, format_func=lambda d: f"Last {d} days")
     with f3:
-        min_experience = st.number_input("Min experience (years)", min_value=0, max_value=30, value=max((profile.years_experience - 1) if profile else 0, 0))
+        default_min_exp = max((profile.years_experience - 1), 0) if profile else 0
+        min_experience = st.number_input("Min experience (years)", min_value=0, max_value=30, value=default_min_exp)
     with f4:
-        max_experience = st.number_input("Max experience (years)", min_value=1, max_value=40, value=((profile.years_experience + 5) if profile else 10))
+        default_max_exp = (profile.years_experience + 5) if profile else 10
+        max_experience = st.number_input("Max experience (years)", min_value=1, max_value=40, value=default_max_exp)
 
-    platforms = st.multiselect("Websites", SUPPORTED_PLATFORMS, default=["linkedin", "indeed", "naukri", "foundit"])
+    default_platforms = ["linkedin", "indeed", "naukri", "google_jobs"]
+    platforms = st.multiselect("Platforms", SUPPORTED_PLATFORMS, default=[p for p in default_platforms if p in SUPPORTED_PLATFORMS])
 
     search_btn = st.form_submit_button("Search Live Jobs", type="primary", use_container_width=True)
 
@@ -56,22 +46,34 @@ if search_btn:
     if not roles:
         st.error("Please select at least one role.")
         st.stop()
+    if not locations:
+        st.error("Please select at least one location.")
+        st.stop()
+    if not platforms:
+        st.error("Please select at least one platform.")
+        st.stop()
 
     scraper = JobScraper()
     all_jobs = []
+    platform_counts = {}
+    diagnostics = []
 
-    with st.spinner(f"Searching {len(roles)} role(s) across {len(platforms)} website(s)..."):
+    with st.spinner(f"Searching {len(roles)} role(s) across {len(locations)} location(s)..."):
         for role in roles:
-            batch = scraper.search(
-                title=role,
-                location=location,
-                platforms=platforms,
-                max_jobs=max_jobs,
-                posted_within_days=posted_within_days,
-                min_experience=min_experience,
-                max_experience=max_experience,
-            )
-            all_jobs.extend(batch)
+            for location in locations:
+                batch = scraper.search(
+                    title=role,
+                    location=location,
+                    platforms=platforms,
+                    max_jobs=max_jobs_per_combination,
+                    posted_within_days=posted_within_days,
+                    min_experience=min_experience,
+                    max_experience=max_experience,
+                )
+                all_jobs.extend(batch)
+                diagnostics.extend(scraper.get_last_run_diagnostics())
+                for j in batch:
+                    platform_counts[j.platform] = platform_counts.get(j.platform, 0) + 1
 
     dedup = {}
     for j in all_jobs:
@@ -79,13 +81,15 @@ if search_btn:
     jobs = list(dedup.values())
 
     if not jobs:
-        st.warning(
-            "No results found with current filters. Try broader freshness/experience or fewer websites. "
-            "Some websites can rate-limit scraping."
-        )
+        st.warning("No results found. Job sites may be blocking automated requests. "
+                    "Try different role/location or check back later.")
     else:
-        st.success(f"Found {len(jobs)} unique jobs for {len(roles)} role(s).")
+        st.success(f"Found {len(jobs)} unique jobs!")
+        if platform_counts:
+            count_parts = [f"{p}: {platform_counts.get(p, 0)}" for p in platforms]
+            st.caption("Platform results -> " + " | ".join(count_parts))
         st.session_state["search_results"] = jobs
+        st.session_state["search_diagnostics"] = diagnostics
 
 if "search_results" in st.session_state:
     jobs = st.session_state["search_results"]
@@ -101,13 +105,14 @@ if "search_results" in st.session_state:
             st.caption(job.company)
         with col2:
             st.caption(f"📍 {job.location}")
+            st.caption(job.platform)
             st.caption(f"Exp: {job.experience or 'n/a'}")
             st.caption(f"Posted: {job.posted_date or 'n/a'}")
         with col3:
-            st.caption(job.platform)
-        with col4:
             if job.url:
                 st.link_button("View", job.url, use_container_width=True)
+        with col4:
+            st.caption(job.freshness or "active")
         with col5:
             checked = st.checkbox("Save", key=f"save_{i}", value=select_all)
             if checked:
@@ -119,29 +124,48 @@ if "search_results" in st.session_state:
             entries = []
             for idx in selected_indices:
                 j = jobs[idx]
-                entries.append(
-                    {
-                        "company": j.company,
-                        "title": j.title,
-                        "location": j.location,
-                        "experience": j.experience,
-                        "posted": j.posted_date,
-                        "url": j.url,
-                        "platform": j.platform,
-                        "match_quality": "good",
-                        "skills_matched": [],
-                        "status": "new",
-                        "freshness": "active",
-                    }
-                )
-
+                entries.append({
+                    "company": j.company, "title": j.title, "location": j.location,
+                    "experience": j.experience, "posted": j.posted_date, "url": j.url,
+                    "platform": j.platform, "match_quality": "good",
+                    "skills_matched": [], "status": "new", "freshness": "active",
+                })
             if hasattr(state, "add_jobs_to_active"):
                 added = state.add_jobs_to_active(entries)
             elif hasattr(state, "add_jobs_for_user"):
                 added = state.add_jobs_for_user(entries, username)
             else:
                 added = 0
-
             st.success(f"Saved {added} new jobs to your database!")
             del st.session_state["search_results"]
+            if "search_diagnostics" in st.session_state:
+                del st.session_state["search_diagnostics"]
             st.rerun()
+
+if "search_diagnostics" in st.session_state:
+    st.subheader("Search Diagnostics")
+    diagnostics = st.session_state["search_diagnostics"]
+    if diagnostics:
+        summary = {}
+        for row in diagnostics:
+            p = row["platform"]
+            if p not in summary:
+                summary[p] = {
+                    "platform": p,
+                    "attempts": 0,
+                    "jobs_found_total": 0,
+                    "errors": 0,
+                    "zero_result_attempts": 0,
+                    "latest_note": "",
+                }
+            summary[p]["attempts"] += 1
+            summary[p]["jobs_found_total"] += int(row.get("jobs_found", 0))
+            if row.get("status") == "error":
+                summary[p]["errors"] += 1
+            if int(row.get("jobs_found", 0)) == 0:
+                summary[p]["zero_result_attempts"] += 1
+            if row.get("note"):
+                summary[p]["latest_note"] = row["note"]
+        st.dataframe(list(summary.values()), use_container_width=True, hide_index=True)
+        with st.expander("Detailed diagnostics"):
+            st.dataframe(diagnostics, use_container_width=True, hide_index=True)
