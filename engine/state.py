@@ -124,6 +124,32 @@ def save_active_jobs(listings: list[dict]):
         json.dump(data, f, indent=2)
 
 
+def load_user_saved_jobs(username: str) -> list[dict]:
+    s = _load_user_state(username)
+    return s.get("saved_jobs", [])
+
+
+def save_user_saved_jobs(jobs: list[dict], username: str):
+    s = _load_user_state(username)
+    s["saved_jobs"] = jobs
+    _save_user_state(username, s)
+
+
+def add_jobs_for_user(new_entries: list[dict], username: str) -> int:
+    existing = load_user_saved_jobs(username)
+    existing_keys = {(j.get("company", "").lower(), j.get("title", "").lower()) for j in existing}
+    added = 0
+    for entry in new_entries:
+        key = (entry.get("company", "").lower(), entry.get("title", "").lower())
+        if key not in existing_keys:
+            existing.append(entry)
+            existing_keys.add(key)
+            added += 1
+    if added:
+        save_user_saved_jobs(existing, username)
+    return added
+
+
 GOOGLE_JOBS_DAILY_LIMIT = 5
 
 
