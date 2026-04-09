@@ -99,6 +99,17 @@ def load_resume_text(username: str = "") -> str:
     return state.get("resume_text", "")
 
 
+def save_resume_preview_b64(b64: str, username: str = ""):
+    s = _load_user_state(username)
+    s["resume_preview_b64"] = b64
+    _save_user_state(username, s)
+
+
+def load_resume_preview_b64(username: str = "") -> str:
+    s = _load_user_state(username)
+    return s.get("resume_preview_b64", "")
+
+
 def load_active_jobs() -> list[dict]:
     path = JOBS_FILE
     if not path.exists():
