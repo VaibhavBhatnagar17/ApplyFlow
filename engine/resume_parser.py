@@ -7,8 +7,13 @@ from .profile import ALL_SKILLS
 
 
 def parse_resume_pdf(uploaded_file) -> str:
-    """Extract text from an uploaded PDF file using pdfplumber."""
+    """Extract text from an uploaded PDF file or raw bytes using pdfplumber."""
     import pdfplumber
+
+    if isinstance(uploaded_file, (bytes, bytearray)):
+        uploaded_file = io.BytesIO(uploaded_file)
+    elif hasattr(uploaded_file, "getvalue"):
+        uploaded_file = io.BytesIO(uploaded_file.getvalue())
 
     text_parts = []
     with pdfplumber.open(uploaded_file) as pdf:
