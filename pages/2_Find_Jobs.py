@@ -31,54 +31,79 @@ if not profile or not profile.is_complete():
     st.page_link("pages/1_Profile.py", label="Set Up Profile", icon="👤")
     st.stop()
 
-st.markdown("# 🔍 Find Jobs")
-st.caption("We search multiple platforms and score every job against your profile.")
+# ── Custom CSS ─────────────────────────────────────────────────────
+st.markdown("""
+<style>
+.search-hero {
+    background: linear-gradient(135deg, #13161d 0%, #1a1f2e 100%);
+    border: 1px solid #2a2f3d; border-radius: 16px;
+    padding: 24px 28px; margin-bottom: 20px;
+}
+.search-hero h1 { font-size: 26px; margin-bottom: 4px; }
+.search-hero p { color: #8c93a8; font-size: 14px; }
+.result-card {
+    padding: 12px 18px; margin: 6px 0; border-radius: 10px;
+    border: 1px solid #2a2f3d; background: #13161d;
+    display: flex; align-items: center; gap: 14px;
+    transition: border-color .15s;
+}
+.result-card:hover { border-color: #3d4a6a; }
+.r-score {
+    min-width: 42px; height: 42px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: 15px; flex-shrink: 0;
+}
+.r-info { flex: 1; min-width: 0; }
+.r-co { font-weight: 700; font-size: 14px; }
+.r-ti { font-size: 12px; color: #8c93a8; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.r-skills { font-size: 10px; color: #6b7280; margin-top: 2px; }
+.r-btn {
+    padding: 6px 14px; border-radius: 6px;
+    background: linear-gradient(135deg, #5b8def, #3d6ad6); color: #fff;
+    font-size: 11px; font-weight: 700; text-decoration: none; white-space: nowrap;
+}
+</style>
+""", unsafe_allow_html=True)
+
+st.markdown("""
+<div class="search-hero">
+    <h1>🔍 Find Jobs</h1>
+    <p>We search multiple platforms and score every job against your profile — with auto-generated cover letters.</p>
+</div>
+""", unsafe_allow_html=True)
 
 # ── Search Configuration ───────────────────────────────────────────
 with st.form("search_form"):
-    col1, col2 = st.columns(2)
-    with col1:
-        default_roles = prefs.target_titles[:5] if prefs.target_titles else TARGET_ROLES[:3]
-        roles = st.multiselect(
-            "Roles to search",
-            TARGET_ROLES,
-            default=[r for r in default_roles if r in TARGET_ROLES],
-        )
-    with col2:
-        default_locs = prefs.target_locations[:3] if prefs.target_locations else TARGET_LOCATIONS[:2]
-        locations = st.multiselect(
-            "Locations",
-            TARGET_LOCATIONS,
-            default=[l for l in default_locs if l in TARGET_LOCATIONS],
-        )
+    c1, c2 = st.columns(2)
+    with c1:
+        dr = prefs.target_titles[:5] if prefs.target_titles else TARGET_ROLES[:3]
+        roles = st.multiselect("Roles to search", TARGET_ROLES,
+            default=[r for r in dr if r in TARGET_ROLES])
+    with c2:
+        dl = prefs.target_locations[:3] if prefs.target_locations else TARGET_LOCATIONS[:2]
+        locations = st.multiselect("Locations", TARGET_LOCATIONS,
+            default=[l for l in dl if l in TARGET_LOCATIONS])
 
-    col3, col4, col5 = st.columns(3)
-    with col3:
-        platforms = st.multiselect(
-            "Platforms",
-            SUPPORTED_PLATFORMS,
+    c3, c4, c5 = st.columns(3)
+    with c3:
+        platforms = st.multiselect("Platforms", SUPPORTED_PLATFORMS,
             default=["linkedin", "indeed", "naukri"],
-            help="google_jobs requires a SerpAPI key (see below).",
-        )
-    with col4:
+            help="google_jobs requires a SerpAPI key (see below).")
+    with c4:
         freshness = st.selectbox("Posted within", ["7 days", "14 days", "30 days"], index=1)
-    with col5:
-        exp_col1, exp_col2 = st.columns(2)
-        with exp_col1:
-            min_exp = st.number_input("Min exp (yrs)", 0, 40, value=max(profile.years_experience - 2, 0))
-        with exp_col2:
-            max_exp = st.number_input("Max exp (yrs)", 0, 40, value=profile.years_experience + 5)
+    with c5:
+        e1, e2 = st.columns(2)
+        with e1:
+            min_exp = st.number_input("Min exp", 0, 40, value=max(profile.years_experience - 2, 0))
+        with e2:
+            max_exp = st.number_input("Max exp", 0, 40, value=profile.years_experience + 5)
 
-    search_btn = st.form_submit_button("Search & Score Jobs", type="primary", use_container_width=True)
+    search_btn = st.form_submit_button("🔍 Search & Score Jobs", type="primary", use_container_width=True)
 
-with st.expander("Google Jobs (SerpAPI key)", expanded=False):
+with st.expander("⚙️ Google Jobs (SerpAPI key)", expanded=False):
     saved_key = load_user_serpapi_key(username)
-    user_key = st.text_input(
-        "SerpAPI Key",
-        value=saved_key,
-        type="password",
-        help="Get a free key at serpapi.com — enables Google Jobs results.",
-    )
+    user_key = st.text_input("SerpAPI Key", value=saved_key, type="password",
+        help="Get a free key at serpapi.com — enables Google Jobs results.")
     if user_key != saved_key:
         save_user_serpapi_key(user_key, username)
         st.success("Key saved.")
@@ -103,47 +128,41 @@ if search_btn:
     use_google = "google_jobs" in platforms
     google_left = google_jobs_remaining(username)
     if use_google and google_left <= 0:
-        st.warning("Google Jobs daily limit reached. Skipping Google Jobs.")
+        st.warning("Google Jobs daily limit reached. Skipping.")
         platforms = [p for p in platforms if p != "google_jobs"]
         use_google = False
 
     scraper = JobScraper()
     all_jobs = []
     google_calls = 0
+    total_combos = len(roles) * len(locations)
 
     progress = st.progress(0, text="Searching…")
-    total = len(roles) * len(locations)
     done = 0
 
     for role in roles:
         for loc in locations:
-            run_platforms = list(platforms)
-            if "google_jobs" in run_platforms and google_left - google_calls <= 0:
-                run_platforms = [p for p in run_platforms if p != "google_jobs"]
+            run_plats = list(platforms)
+            if "google_jobs" in run_plats and google_left - google_calls <= 0:
+                run_plats = [p for p in run_plats if p != "google_jobs"]
 
             batch = scraper.search(
-                title=role,
-                location=loc,
-                platforms=run_platforms,
-                max_jobs=30,
-                posted_within_days=posted_days,
-                min_experience=min_exp,
-                max_experience=max_exp,
+                title=role, location=loc, platforms=run_plats,
+                max_jobs=30, posted_within_days=posted_days,
+                min_experience=min_exp, max_experience=max_exp,
                 serpapi_key=serpapi_key,
             )
             all_jobs.extend(batch)
-            if "google_jobs" in run_platforms:
+            if "google_jobs" in run_plats:
                 google_calls += 1
-
             done += 1
-            progress.progress(done / total, text=f"Searched {role} in {loc}…")
+            progress.progress(done / total_combos, text=f"Searched {role} in {loc}…")
 
     progress.empty()
 
     if google_calls > 0:
         increment_google_jobs_usage(username, google_calls)
 
-    # Deduplicate
     seen_ids = set()
     unique = []
     for j in all_jobs:
@@ -155,23 +174,18 @@ if search_btn:
         st.warning("No jobs found. Try broader roles or different locations.")
         st.stop()
 
-    # Score against profile
     matcher = JobMatcher(profile, prefs)
     results = matcher.score_jobs(unique)
-
-    # Generate cover letters and determine match quality
     cover_gen = CoverLetterGenerator(profile)
+
     entries = []
     for r in results:
         if r.score < prefs.min_match_score:
             continue
-
         quality = "excellent" if r.score >= 0.75 else ("good" if r.score >= 0.50 else "stretch")
         cover = cover_gen.generate(r.job)
-
         matched_skills = [s for s in profile.core_skills
                           if s.lower() in f"{r.job.title} {r.job.description}".lower()]
-
         entries.append({
             "company": r.job.company,
             "title": r.job.title,
@@ -191,33 +205,45 @@ if search_btn:
     added = add_jobs_for_user(entries, username)
     total_saved = len(load_user_saved_jobs(username))
 
-    st.success(f"Found **{len(entries)}** matching jobs. Added **{added}** new to your dashboard (total: {total_saved}).")
+    # ── Results summary ────────────────────────────────────────────
+    exc = sum(1 for e in entries if e["match_quality"] == "excellent")
+    good = sum(1 for e in entries if e["match_quality"] == "good")
+    stretch = sum(1 for e in entries if e["match_quality"] == "stretch")
 
-    # Quick preview
+    st.markdown(f"""
+    <div style="background:#13161d;border:1px solid #2a2f3d;border-radius:12px;padding:18px 24px;margin:16px 0">
+        <div style="font-size:18px;font-weight:700;margin-bottom:8px">
+            Found {len(entries)} matching jobs — added {added} new
+        </div>
+        <div style="display:flex;gap:16px;font-size:13px">
+            <span style="color:#22c984;font-weight:700">{exc} Excellent</span>
+            <span style="color:#5b8def;font-weight:700">{good} Good</span>
+            <span style="color:#f0b429;font-weight:700">{stretch} Stretch</span>
+            <span style="color:#8c93a8">Total in dashboard: {total_saved}</span>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # ── Preview top matches ────────────────────────────────────────
     st.markdown("### Top Matches")
-    for e in entries[:10]:
+    for e in entries[:15]:
         score = e["match_score"]
         q = e["match_quality"]
         color = "#22c984" if q == "excellent" else ("#5b8def" if q == "good" else "#f0b429")
+        bg = f"rgba({int(color[1:3],16)},{int(color[3:5],16)},{int(color[5:7],16)},.12)"
         skills_str = ", ".join(e["skills_matched"][:6]) if e["skills_matched"] else "—"
-        st.markdown(
-            f"<div style='padding:10px 16px;margin:4px 0;border-radius:8px;border:1px solid #333;"
-            f"display:flex;align-items:center;gap:12px'>"
-            f"<span style='min-width:40px;height:40px;border-radius:8px;display:flex;"
-            f"align-items:center;justify-content:center;font-weight:900;font-size:15px;"
-            f"background:rgba({','.join(str(int(color[i:i+2],16)) for i in (1,3,5))},.12);"
-            f"color:{color}'>{score}</span>"
-            f"<div style='flex:1;min-width:0'>"
-            f"<div style='font-weight:700;font-size:14px'>{e['company']}</div>"
-            f"<div style='font-size:12px;color:#999;overflow:hidden;text-overflow:ellipsis;"
-            f"white-space:nowrap'>{e['title']}</div>"
-            f"<div style='font-size:10px;color:#777;margin-top:2px'>{skills_str}</div>"
-            f"</div>"
-            f"<a href='{e['url']}' target='_blank' style='padding:6px 14px;border-radius:6px;"
-            f"background:linear-gradient(135deg,#5b8def,#3d6ad6);color:#fff;font-size:11px;"
-            f"font-weight:700;text-decoration:none'>Apply ↗</a>"
-            f"</div>",
-            unsafe_allow_html=True,
-        )
 
+        st.markdown(f"""
+        <div class="result-card">
+            <div class="r-score" style="background:{bg};color:{color}">{score}</div>
+            <div class="r-info">
+                <div class="r-co">{e['company']}</div>
+                <div class="r-ti">{e['title']}</div>
+                <div class="r-skills">{skills_str} · {e['platform']} · {e['location']}</div>
+            </div>
+            <a href="{e['url']}" target="_blank" class="r-btn">Apply ↗</a>
+        </div>
+        """, unsafe_allow_html=True)
+
+    st.markdown("---")
     st.page_link("pages/3_Dashboard.py", label="Open Full Dashboard →", icon="📊")
