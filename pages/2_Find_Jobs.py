@@ -84,19 +84,26 @@ with st.form("search_form"):
         locations = st.multiselect("Locations", TARGET_LOCATIONS,
             default=[l for l in dl if l in TARGET_LOCATIONS])
 
-    c3, c4, c5 = st.columns(3)
+    c3, c4 = st.columns(2)
     with c3:
         platforms = st.multiselect("Platforms", SUPPORTED_PLATFORMS,
             default=["linkedin", "indeed", "naukri"],
             help="google_jobs requires a SerpAPI key (see below).")
     with c4:
-        freshness = st.selectbox("Posted within", ["7 days", "14 days", "30 days"], index=1)
+        freshness = st.selectbox(
+            "📅 Posted within",
+            ["1 day", "3 days", "7 days", "14 days", "30 days"],
+            index=2,
+            help="Only show jobs posted within this window.",
+        )
+
+    c5, c6, c7 = st.columns(3)
     with c5:
-        e1, e2 = st.columns(2)
-        with e1:
-            min_exp = st.number_input("Min exp", 0, 40, value=max(profile.years_experience - 2, 0))
-        with e2:
-            max_exp = st.number_input("Max exp", 0, 40, value=profile.years_experience + 5)
+        min_exp = st.number_input("Min experience (yrs)", 0, 40, value=max(profile.years_experience - 2, 0))
+    with c6:
+        max_exp = st.number_input("Max experience (yrs)", 0, 40, value=profile.years_experience + 5)
+    with c7:
+        st.caption("")  # spacer for alignment
 
     search_btn = st.form_submit_button("🔍 Search & Score Jobs", type="primary", use_container_width=True)
 
